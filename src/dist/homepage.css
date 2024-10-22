@@ -1,0 +1,124 @@
+nav {
+  border-bottom: 1px solid #3c3c3c;
+  padding: 10px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav img {
+  height: 44px;
+}
+nav ol {
+  display: flex;
+}
+nav ol li:nth-child(-n+3)::after {
+  content: "|";
+  margin: 0 10px;
+}
+nav ol a {
+  color: #3c3c3c;
+  font-size: 20px;
+  text-decoration: none;
+}
+nav ol a:hover {
+  text-decoration: underline;
+}
+
+.info {
+  width: 1030px;
+  padding: 25px 0;
+  margin: 0 auto;
+}
+.info h3 {
+  font-size: 32px;
+  text-align: center;
+  margin: 40px 0;
+}
+.info p, .info span {
+  line-height: 1.5;
+}
+.info img {
+  max-height: 300px;
+  object-fit: cover;
+}
+.info div.enactus, .info div.about {
+  display: flex;
+  justify-content: space-between;
+}
+.info div.enactus span, .info div.about span {
+  font-size: 16px;
+  width: 80%;
+}
+.info div.about {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  align-content: center;
+  gap: 10px;
+}
+.info div.about p {
+  grid-column: 1/3;
+}
+.info div.about img {
+  grid-column: 1/2;
+  width: 100%;
+  aspect-ratio: 4/3;
+}
+.info div.about span {
+  justify-self: end;
+}
+
+.swiper {
+  max-height: 300px;
+}
+.swiper-slide {
+  max-height: 300px;
+  aspect-ratio: 1/1;
+}
+.swiper-slide img, .swiper-slide div {
+  width: 246.25px;
+}
+.swiper-slide img {
+  border-radius: 10px;
+}
+.swiper-slide div {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 60px;
+  border-radius: 0 0 10px 10px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+}
+.swiper-slide div p {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+.swiper-slide div p:first-of-type {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+footer {
+  margin-top: 40px;
+  background-color: #3c3c3c;
+  color: white;
+  padding: 20px 60px;
+  display: grid;
+  gap: 80px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+footer div {
+  font-size: 16px;
+}
+footer div p:last-of-type {
+  margin-top: 10px;
+}
+footer div a {
+  color: white;
+}
+footer div:last-of-type {
+  margin: 0 auto;
+  text-align: center;
+}
