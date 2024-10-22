@@ -20,6 +20,28 @@ nav
       text-decoration: none
       &:hover
         text-decoration: underline
+.mainPhoto
+  position: relative
+  img
+    width: 100%
+    height: 300px
+    object-fit: cover
+  div
+    color: white
+    background-color: rgba(0, 0, 0, .5)
+    font-size: 32px
+    width: 100%
+    height: 100%
+    text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 10px
+    position: absolute
+    top: 0
+    p:first-of-type
+      font-weight: bold
 .info
   width: 1030px
   padding: 25px 0
@@ -90,9 +112,8 @@ footer
     font-size: 16px
     p:last-of-type
       margin-top: 10px
-    a 
+    a
       color: white
     &:last-of-type
       margin: 0 auto
       text-align: center
-      
