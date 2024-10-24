@@ -1,7 +1,7 @@
-@import 'colors'
+@use './colors' as c
 
 nav
-  border-bottom: 1px solid $black
+  border-bottom: 1px solid c.$black
   padding: 10px 60px
   display: flex
   align-items: center
@@ -15,7 +15,7 @@ nav
         content: '|'
         margin: 0 10px
     a
-      color: $black
+      color: c.$black
       font-size: 20px
       text-decoration: none
       &:hover
@@ -103,7 +103,7 @@ nav
           font-weight: bold
 footer
   margin-top: 40px
-  background-color: $black
+  background-color: c.$black
   color: white
   padding: 20px 60px
   display: grid
