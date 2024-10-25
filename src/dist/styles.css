@@ -13,61 +13,44 @@
   color: #333;
 }
 
-.project-container {
-  text-align: center;
-  padding: 20px;
-}
-.project-container h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-.project-container .project-content {
+.container {
+  width: 1030px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  flex-direction: row;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.project-container .project-content .project-image {
-  flex: 1;
-}
-.project-container .project-content .project-image img {
-  max-width: 100%;
+.container img {
+  width: 400px;
   height: auto;
-  border: 1px solid #ddd;
+  border-radius: 5px;
 }
-.project-container .project-content .project-description {
-  flex: 1;
-  text-align: left;
-  max-width: 600px;
-}
-.project-container .project-content .project-description p {
+.container p {
   font-size: 16px;
-  margin-bottom: 20px;
+  color: #333;
+  margin: 0 10px 0 0;
 }
-.project-container .project-content .project-description .learn-more {
-  display: inline-block;
-  margin-top: 20px;
+.container div {
+  width: 400px;
 }
-.project-container .project-content .project-description .learn-more button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
+.container button {
+  padding: 8px 12px;
   font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-  text-transform: uppercase;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
 }
-.project-container .project-content .project-description .learn-more button:hover {
+.container button:hover {
   background-color: #0056b3;
 }
-.project-container .project-content .project-description .learn-more button:focus {
-  outline: none;
-}
 
-.container {
+.container1 {
   display: flex;
   flex-direction: column;
   align-items: center;
