@@ -1,0 +1,123 @@
+.projects-overview {
+  text-align: center;
+  margin: 40px 0; 
+
+  h2 {
+    font-size: 36px; 
+    font-weight: bold;
+    margin-bottom: 20px; 
+  }
+
+  p {
+    font-size: 20px; 
+    line-height: 1.8; 
+    color: #333;
+  }
+}
+.project-container {
+  text-align: center;
+  padding: 20px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .project-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px; // Doubled the gap between the image and the description
+
+    .project-image {
+      flex: 1;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+      }
+    }
+
+    .project-description {
+      flex: 1;
+      text-align: left;
+      max-width: 600px;
+
+      p {
+        font-size: 16px;
+        margin-bottom: 20px; // Doubled the margin between the text and the button
+      }
+
+      .learn-more {
+        display: inline-block;
+        margin-top: 20px; // Doubled the spacing above the button
+
+        button {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          font-size: 14px;
+          border-radius: 5px;
+          cursor: pointer;
+          text-transform: uppercase;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: #0056b3;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+$font-size-large: 16px;
+$font-size-medium: 14px;
+$primary-color: black;
+$border-radius: 5px;
+$padding: 15px;
+$button-padding: 10px 20px;
+$button-hover-color: #ccc;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  
+}
+
+.message-box {
+  border: 2px solid $primary-color;
+  padding: $padding;
+  text-align: center;
+  font-size: $font-size-large;
+  width: 300px;
+  margin-bottom: 20px;
+  border-radius: $border-radius;
+
+  p {
+    margin: 0;
+    font-size: $font-size-medium;
+  }
+}
+
+.join-btn {
+  border: 2px solid $primary-color;
+  background-color: white;
+  padding: $button-padding;
+  cursor: pointer;
+  font-size: $font-size-medium;
+  border-radius: $border-radius;
+
+  &:hover {
+    background-color: $button-hover-color;
+  }
+}
