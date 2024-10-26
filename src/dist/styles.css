@@ -3,7 +3,7 @@
   margin: 40px 0;
 }
 .projects-overview h2 {
-  font-size: 36px;
+  font-size: 50px;
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -22,6 +22,7 @@
   flex-direction: row;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 .container img {
   width: 400px;
@@ -88,4 +89,30 @@ p {
   font-size: 16px;
   line-height: 1.8;
   color: #333;
+}
+
+.footer {
+  margin-top: 40px;
+  background-color: black;
+  color: white;
+  padding: 20px 60px;
+  display: grid;
+  gap: 80px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.footer div {
+  font-size: 16px;
+}
+.footer div:first-of-type p {
+  color: white;
+}
+.footer div p:last-of-type {
+  margin-top: 10px;
+}
+.footer div a {
+  color: white;
+}
+.footer div:last-of-type {
+  margin: 0 auto;
+  text-align: center;
 }
