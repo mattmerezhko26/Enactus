@@ -15,44 +15,34 @@
   }
 }
 .container {
-  width: 1030px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-
   img {
-      width: 400px;
-      height: auto;
-      border-radius: 5px;
+    max-width: 100%;
+    height: auto;
   }
 
-  p {
-      font-size: 16px;
-      color: #333;
-      margin: 0 10px 0 0;
-  }
   div {
-    width: 400px;
+    padding: 1rem;
 
-  }
-  button {
-      padding: 8px 12px;
-      font-size: 14px;
+    p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .button-link {
+      display: inline-block;
+      padding: 10px 20px;
       background-color: #007bff;
       color: white;
-      border: none;
+      text-align: center;
+      text-decoration: none;
       border-radius: 5px;
-      cursor: pointer;
       transition: background-color 0.3s ease;
 
       &:hover {
-          background-color: #0056b3;
+        background-color: #0056b3;
       }
+    }
   }
 }
 $font-size-large: 16px;
@@ -63,47 +53,35 @@ $padding: 15px;
 $button-padding: 10px 20px;
 $button-hover-color: #ccc;
 
-.container1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 300px;
-  
-}
-
-.message-box {
-  border: 2px solid $primary-color;
-  padding: $padding;
+.join-us {
+  padding: 1.5rem;
   text-align: center;
-  font-size: $font-size-large;
-  width: 300px;
-  margin-bottom: 20px;
-  border-radius: $border-radius;
+  background-color: #f3f3f3;
+  border-radius: 8px;
 
   p {
-    margin: 0;
-    font-size: $font-size-medium;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+    }
   }
 }
 
-.join-btn {
-  border: 2px solid $primary-color;
-  background-color: white;
-  padding: $button-padding;
-  cursor: pointer;
-  font-size: $font-size-medium;
-  border-radius: $border-radius;
-
-  &:hover {
-    background-color: $button-hover-color;
-  }
-}
-p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #333;
-}
 .footer {
   margin-top: 40px;
   background-color: black;
