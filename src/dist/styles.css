@@ -13,82 +13,79 @@
   color: #333;
 }
 
-.container {
-  width: 1030px;
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  border-radius: 10px;
+}
+
+.container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
 }
 .container img {
-  width: 400px;
+  width: 100%;
   height: auto;
-  border-radius: 5px;
-}
-.container p {
-  font-size: 16px;
-  color: #333;
-  margin: 0 10px 0 0;
 }
 .container div {
-  width: 400px;
+  padding: 1rem;
 }
-.container button {
-  padding: 8px 12px;
-  font-size: 14px;
+.container div p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+.container div .button-link {
+  display: inline-block;
+  padding: 10px 20px;
   background-color: #007bff;
   color: white;
-  border: none;
+  text-align: center;
+  text-decoration: none;
   border-radius: 5px;
-  cursor: pointer;
   transition: background-color 0.3s ease;
 }
-.container button:hover {
+.container div .button-link:hover {
   background-color: #0056b3;
 }
 
-.container1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 300px;
-}
-
-.message-box {
-  border: 2px solid black;
-  padding: 15px;
+.join-us {
+  grid-column: 1/-1;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 1.5rem;
   text-align: center;
-  font-size: 16px;
-  width: 300px;
-  margin-bottom: 20px;
-  border-radius: 5px;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.message-box p {
-  margin: 0;
-  font-size: 14px;
-}
-
-.join-btn {
-  border: 2px solid black;
-  background-color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 5px;
-}
-.join-btn:hover {
-  background-color: #ccc;
-}
-
-p {
-  font-size: 16px;
-  line-height: 1.8;
+.join-us p {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
   color: #333;
+  line-height: 1.6;
+}
+.join-us button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.join-us button:hover {
+  background-color: #333;
+  color: #fff;
 }
 
 .footer {
