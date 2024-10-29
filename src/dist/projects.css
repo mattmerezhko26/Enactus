@@ -34,6 +34,8 @@
 .card-box img {
   width: 100%;
   height: 300px;
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
 }
 .card-box div {
   padding: 1rem;
