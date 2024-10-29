@@ -1,40 +1,64 @@
+@use './colors' as c;
+
+@mixin box-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@mixin button-style($button-background-color, $border-color, $text-color, $hover-background, $hover-color) {
+  background-color: $button-background-color;
+  color: $text-color;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  border: $border-color;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: $hover-background;
+    color: $hover-color;
+  }
+}
+
 .projects-overview {
   text-align: center;
   margin: 40px 0;
 
   h2 {
-    font-size: 50px;
+    font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
   }
 
   p {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 1.8;
-    color: #333;
+    color: c.$black;
   }
 }
 
 .main-container {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px; 
+  gap: 15px;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1030px;
   margin: 0 auto;
 }
 
-.container {
-  background-color: #fff;
-  border: 1px solid #ddd;
+.card-box {
+  background-color: c.$background-color;
+  border: 1px solid c.$border;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-align: center;
+  width:calc((100% - 15px*2)/3);
+  @include box-shadow;
 
   img {
     width: 100%;
-    height: auto;
+    height: 300px;
   }
 
   div {
@@ -43,22 +67,17 @@
     p {
       margin-bottom: 1rem;
       font-size: 1rem;
-      color: #333;
+      color: c.$black;
     }
 
     .button-link {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: #0056b3;
-      }
+      @include button-style(
+        null,              
+        c.$border,
+        c.$black,
+        c.$hover-background,
+        c.$hover-color            
+      );
     }
   }
 }
@@ -66,42 +85,36 @@
 .join-us {
   grid-column: 1 / -1;
   max-width: 400px;
-  margin: 40px auto; 
+  margin: 40px auto;
   padding: 1.5rem;
   text-align: center;
-  background-color: #fff;
-  border: 2px solid #333;
+  background-color: c.$background-color;
+  border: 2px solid c.$border;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  @include box-shadow;
 
   p {
     margin-bottom: 1.5rem;
     font-size: 1rem;
-    color: #333;
+    color: c.$black;
     line-height: 1.6;
   }
 
   button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #333;
-    background-color: #fff;
-    border: 2px solid #333;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-
-    &:hover {
-      background-color: #333;
-      color: #fff;
-    }
+    @include button-style(
+      c.$background-color,
+      c.$border,
+      c.$black,
+      c.$hover-background,
+      c.$hover-color
+    );
   }
 }
 
 .footer {
   margin-top: 40px;
-  background-color: black;
-  color: white;
+  background-color: c.$background-color;
+  color: c.$text-light;
   padding: 20px 60px;
   display: grid;
   gap: 80px;
@@ -111,7 +124,7 @@
     font-size: 16px;
 
     &:first-of-type p {
-      color: white;
+      color: c.$text-light;
     }
 
     p:last-of-type {
@@ -119,7 +132,7 @@
     }
 
     a {
-      color: white;
+      color: c.$text-light;
     }
 
     &:last-of-type {

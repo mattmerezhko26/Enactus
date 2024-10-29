@@ -3,57 +3,59 @@
   margin: 40px 0;
 }
 .projects-overview h2 {
-  font-size: 50px;
+  font-size: 32px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 .projects-overview p {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.8;
-  color: #333;
+  color: #3c3c3c;
 }
 
 .main-container {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 15px;
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1030px;
   margin: 0 auto;
 }
 
-.container {
+.card-box {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-align: center;
+  width: calc((100% - 30px) / 3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.container img {
+.card-box img {
   width: 100%;
-  height: auto;
+  height: 300px;
 }
-.container div {
+.card-box div {
   padding: 1rem;
 }
-.container div p {
+.card-box div p {
   margin-bottom: 1rem;
   font-size: 1rem;
-  color: #333;
+  color: #3c3c3c;
 }
-.container div .button-link {
-  display: inline-block;
+.card-box div .button-link {
+  color: #3c3c3c;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
   text-align: center;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border: #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.container div .button-link:hover {
+.card-box div .button-link:hover {
   background-color: #0056b3;
+  color: white;
 }
 
 .join-us {
@@ -63,34 +65,35 @@
   padding: 1.5rem;
   text-align: center;
   background-color: #fff;
-  border: 2px solid #333;
+  border: 2px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .join-us p {
   margin-bottom: 1.5rem;
   font-size: 1rem;
-  color: #333;
+  color: #3c3c3c;
   line-height: 1.6;
 }
 .join-us button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  color: #333;
   background-color: #fff;
-  border: 2px solid #333;
+  color: #3c3c3c;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
   border-radius: 5px;
+  border: #ddd;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 .join-us button:hover {
-  background-color: #333;
-  color: #fff;
+  background-color: #0056b3;
+  color: white;
 }
 
 .footer {
   margin-top: 40px;
-  background-color: black;
+  background-color: #fff;
   color: white;
   padding: 20px 60px;
   display: grid;
