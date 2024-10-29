@@ -4,20 +4,20 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@mixin button-style($button-background-color, $border-color, $text-color, $hover-background, $hover-color) {
+@mixin button-style($button-background-color, $border-color, $text-color, $hover-background, $hover-text-color) {
   background-color: $button-background-color;
   color: $text-color;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   border-radius: 5px;
-  border: $border-color;
+  border: 1px solid $border-color;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
     background-color: $hover-background;
-    color: $hover-color;
+    color: $hover-text-color;
   }
 }
 
@@ -39,7 +39,7 @@
 }
 
 .main-container {
-  display: flex;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 15px;
   padding: 20px;
@@ -48,19 +48,18 @@
 }
 
 .card-box {
-  background-color: c.$background-color;
+  background-color: c.$white;
   border: 1px solid c.$border;
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
-  width:calc((100% - 15px*2)/3);
   @include box-shadow;
 
   img {
     width: 100%;
     height: 300px;
-    object-fit:cover;
-    border-radius:5px 5px 0 0;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
   }
 
   div {
@@ -74,11 +73,11 @@
 
     .button-link {
       @include button-style(
-        null,              
-        c.$border,
-        c.$black,
-        c.$hover-background,
-        c.$hover-color            
+        c.$white, 
+        c.$border, 
+        c.$black, 
+        c.$hover-background, 
+        c.$white
       );
     }
   }
@@ -90,7 +89,7 @@
   margin: 40px auto;
   padding: 1.5rem;
   text-align: center;
-  background-color: c.$background-color;
+  background-color: c.$white;
   border: 2px solid c.$border;
   border-radius: 8px;
   @include box-shadow;
@@ -104,29 +103,32 @@
 
   button {
     @include button-style(
-      c.$background-color,
-      c.$border,
-      c.$black,
-      c.$hover-background,
-      c.$hover-color
+      c.$white, 
+      c.$border, 
+      c.$black, 
+      c.$hover-background, 
+      c.$white
     );
   }
 }
 
 .footer {
-  margin-top: 40px;
-  background-color: c.$background-color;
-  color: c.$text-light;
+  margin-top: auto;
+  background-color: c.$white;
+  color: c.$white;
   padding: 20px 60px;
   display: grid;
   gap: 80px;
   grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  position: relative; 
+  bottom: 0;
 
   div {
     font-size: 16px;
 
     &:first-of-type p {
-      color: c.$text-light;
+      color: c.$white;
     }
 
     p:last-of-type {
@@ -134,7 +136,7 @@
     }
 
     a {
-      color: c.$text-light;
+      color: c.$white;
     }
 
     &:last-of-type {
