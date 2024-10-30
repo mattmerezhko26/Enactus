@@ -1,59 +1,31 @@
 @use './colors' as c;
-
-@mixin box-shadow {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-@mixin button-style($button-background-color, $border-color, $text-color, $hover-background, $hover-text-color) {
-  background-color: $button-background-color;
-  color: $text-color;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-  border: 1px solid $border-color;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  &:hover {
-    background-color: $hover-background;
-    color: $hover-text-color;
-  }
-}
+@use './common' as com;
+@use './navAndFooter.scss';
 
 .projects-overview {
   text-align: center;
-  margin: 40px 0;
+  max-width: 1030px;
+  margin: 40px auto;
 
-  h2 {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 20px;
-  }
 
   p {
-    font-size: 16px;
-    line-height: 1.8;
     color: c.$black;
+    margin: 20px 0;
   }
 }
 
 .main-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 15px;
-  padding: 20px;
   max-width: 1030px;
   margin: 0 auto;
+  display: flex;
+  gap: 15px;
 }
 
 .card-box {
   background-color: c.$white;
   border: 1px solid c.$border;
   border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-  @include box-shadow;
+  @include com.box-shadow;
 
   img {
     width: 100%;
@@ -66,13 +38,15 @@
     padding: 1rem;
 
     p {
-      margin-bottom: 1rem;
-      font-size: 1rem;
       color: c.$black;
+      margin-bottom: 1rem;
+      @include com.font-break(3);
     }
 
     .button-link {
-      @include button-style(
+      display: inline-block;
+      margin: 0 auto;
+      @include com.button-style(
         c.$white, 
         c.$border, 
         c.$black, 
@@ -84,64 +58,28 @@
 }
 
 .join-us {
-  grid-column: 1 / -1;
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 1.5rem;
-  text-align: center;
   background-color: c.$white;
+  text-align: center;
+  max-width: 400px;
   border: 2px solid c.$border;
   border-radius: 8px;
-  @include box-shadow;
+  margin: 40px auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  @include com.box-shadow;
 
   p {
     margin-bottom: 1.5rem;
-    font-size: 1rem;
     color: c.$black;
-    line-height: 1.6;
   }
 
   button {
-    @include button-style(
+    @include com.button-style(
       c.$white, 
       c.$border, 
       c.$black, 
       c.$hover-background, 
       c.$white
     );
-  }
-}
-
-.footer {
-  margin-top: auto;
-  background-color: c.$white;
-  color: c.$white;
-  padding: 20px 60px;
-  display: grid;
-  gap: 80px;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 100%;
-  position: relative; 
-  bottom: 0;
-
-  div {
-    font-size: 16px;
-
-    &:first-of-type p {
-      color: c.$white;
-    }
-
-    p:last-of-type {
-      margin-top: 10px;
-    }
-
-    a {
-      color: c.$white;
-    }
-
-    &:last-of-type {
-      margin: 0 auto;
-      text-align: center;
-    }
   }
 }

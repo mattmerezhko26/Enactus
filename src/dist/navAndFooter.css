@@ -1,0 +1,48 @@
+nav {
+  border-bottom: 1px solid #3c3c3c;
+  padding: 10px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav img {
+  height: 44px;
+}
+nav ol {
+  display: flex;
+}
+nav ol li:nth-child(-n+3)::after {
+  content: "|";
+  margin: 0 10px;
+}
+nav ol a {
+  color: #3c3c3c;
+  font-size: 20px;
+  text-decoration: none;
+}
+nav ol a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  color: #fff;
+  background-color: #3c3c3c;
+  padding: 20px 60px;
+  margin-top: 40px;
+  display: grid;
+  gap: 80px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+footer div p {
+  line-height: 1;
+}
+footer div p:last-of-type {
+  margin-top: 10px;
+}
+footer div a {
+  color: #fff;
+}
+footer div:last-of-type {
+  margin: 0 auto;
+  text-align: center;
+}

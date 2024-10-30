@@ -1,32 +1,7 @@
 @use 'colors' as c;
+@use 'common' as com;
+@use './navAndFooter.scss';
 
-nav {
-  border-bottom: 1px solid c.$black;
-  padding: 10px 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  img {
-    height: 44px;
-  }
-  ol {
-    display: flex;
-    li {
-      &:nth-child(-n + 3)::after {
-        content: '|';
-        margin: 0 10px;
-      }
-    }
-    a {
-      color: c.$black;
-      font-size: 20px;
-      text-decoration: none;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-}
 .mainPhoto {
   position: relative;
   img {
@@ -35,7 +10,7 @@ nav {
     object-fit: cover;
   }
   div {
-    color: white;
+    color: c.$white;
     background-color: rgba(0, 0, 0, 0.5);
     font-size: 32px;
     width: 100%;
@@ -61,9 +36,6 @@ nav {
     font-size: 32px;
     text-align: center;
     margin: 40px 0;
-  }
-  p, span {
-    line-height: 1.5;
   }
   img {
     max-height: 300px;
@@ -119,36 +91,13 @@ nav {
       position: absolute;
       bottom: 0;
       p {
-        color: white;
-        font-size: 16px;
+        color: c.$white;
         text-align: center;
         &:first-of-type {
           font-size: 20px;
           font-weight: bold;
         }
       }
-    }
-  }
-}
-footer {
-  margin-top: 40px;
-  background-color: c.$black;
-  color: white;
-  padding: 20px 60px;
-  display: grid;
-  gap: 80px;
-  grid-template-columns: 1fr 1fr 1fr;
-  div {
-    font-size: 16px;
-    p:last-of-type {
-      margin-top: 10px;
-    }
-    a {
-      color: white;
-    }
-    &:last-of-type {
-      margin: 0 auto;
-      text-align: center;
     }
   }
 }

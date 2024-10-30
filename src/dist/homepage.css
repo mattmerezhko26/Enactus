@@ -1,3 +1,15 @@
+h3 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 16px;
+}
+
+span, p {
+  line-height: 1.5;
+}
+
 nav {
   border-bottom: 1px solid #3c3c3c;
   padding: 10px 60px;
@@ -24,6 +36,29 @@ nav ol a:hover {
   text-decoration: underline;
 }
 
+footer {
+  color: #fff;
+  background-color: #3c3c3c;
+  padding: 20px 60px;
+  margin-top: 40px;
+  display: grid;
+  gap: 80px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+footer div p {
+  line-height: 1;
+}
+footer div p:last-of-type {
+  margin-top: 10px;
+}
+footer div a {
+  color: #fff;
+}
+footer div:last-of-type {
+  margin: 0 auto;
+  text-align: center;
+}
+
 .mainPhoto {
   position: relative;
 }
@@ -33,7 +68,7 @@ nav ol a:hover {
   object-fit: cover;
 }
 .mainPhoto div {
-  color: white;
+  color: #fff;
   background-color: rgba(0, 0, 0, 0.5);
   font-size: 32px;
   width: 100%;
@@ -60,9 +95,6 @@ nav ol a:hover {
   font-size: 32px;
   text-align: center;
   margin: 40px 0;
-}
-.info p, .info span {
-  line-height: 1.5;
 }
 .info img {
   max-height: 300px;
@@ -119,34 +151,10 @@ nav ol a:hover {
   bottom: 0;
 }
 .swiper-slide div p {
-  color: white;
-  font-size: 16px;
+  color: #fff;
   text-align: center;
 }
 .swiper-slide div p:first-of-type {
   font-size: 20px;
   font-weight: bold;
-}
-
-footer {
-  margin-top: 40px;
-  background-color: #3c3c3c;
-  color: white;
-  padding: 20px 60px;
-  display: grid;
-  gap: 80px;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-footer div {
-  font-size: 16px;
-}
-footer div p:last-of-type {
-  margin-top: 10px;
-}
-footer div a {
-  color: white;
-}
-footer div:last-of-type {
-  margin: 0 auto;
-  text-align: center;
 }
