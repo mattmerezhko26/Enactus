@@ -30,7 +30,7 @@
   margin: 0 auto;
   padding: 20px;
 
-  .card-leaders-info {
+  .card-leaders-info, .card-leaders-info-reverse {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -67,6 +67,10 @@
         color: #555;
       }
     }
+  }
+
+  .card-leaders-info-reverse {
+    flex-direction: row-reverse;
   }
 }
 .join-us {
