@@ -133,48 +133,67 @@ footer div:last-of-type {
   text-align: center;
   padding: 20px;
 }
-.department-info .headerOfDepartment {
-  margin-bottom: 20px;
-}
-.department-info .headerOfDepartment h2 {
-  font-size: 1.5em;
-  margin: 0;
-}
-.department-info .headerOfDepartment p {
+
+.department-info p {
   font-size: 1em;
   color: #666;
-}
-.department-info .members {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  margin-bottom: 20px;
 }
 
-.member-card {
-  width: 320px;
+.members {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.department-card {
+  width: calc((100% - 60px) / 3);
+  max-width: 300px;
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  border: 1px solid #ccc;
+}
+.department-card img {
+  width: 70%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+.department-card p {
+  margin-bottom: 10px;
+}
+.department-card p:first-of-type {
+  font-weight: bold;
+}
+.department-card hr {
+  width: 50%;
+  margin: 10px 0;
+}
+.department-card .icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.department-card .icon-box span {
+  width: auto;
+  padding: 5px;
+  background-color: lightgray;
   border-radius: 5px;
-  overflow: hidden;
-  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
-.member-card div {
-  width: 300px;
-  height: 300px;
-  background-image: url("https://fakeimg.pl/600/");
-  background-size: cover;
-  background-position: center;
-  margin: 10px auto;
-}
-.member-card h3 {
-  margin: 0;
-  font-size: 1em;
-  color: #333;
-}
-.member-card p {
-  margin: 0;
-  font-size: 0.8em;
-  color: #333;
+.department-card .icon-box span:hover {
+  background-color: darkgray;
 }
 
 .join-us {

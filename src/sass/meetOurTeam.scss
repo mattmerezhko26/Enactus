@@ -78,55 +78,75 @@
   width: 100%;
   text-align: center;
   padding: 20px;
-
-  .headerOfDepartment {
-    margin-bottom: 20px;
-
-    h2 {
-      font-size: 1.5em;
-      margin: 0;
-    }
-
-    p {
-      font-size: 1em;
-      color: #666;
-    }
-  }
-
-  .members {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
 }
 
-.member-card {
-  width: 320px;
+
+
+.department-info p {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 20px; 
+}
+
+.members {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  gap: 20px; 
+  flex-wrap: wrap; 
+  padding: 20px;
+}
+
+.department-card {
+  width: calc((100% - 60px) / 3); // Ensures 3 cards fit in one row
+  max-width: 300px; // Prevents cards from becoming too wide
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: #fff;
 
-  div {
-    width: 300px;
-    height: 300px;
-    background-image: url('https://fakeimg.pl/600/');
-    background-size: cover;
-    background-position: center;
-    margin: 10px auto;
-  }
-
-  h3 {
-    margin: 0;
-    font-size: 1em;
-    color: #333;
+  img {
+    width: 70%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
   }
 
   p {
-    margin: 0;
-    font-size: 0.8em;
-    color: #333;
+    &:first-of-type {
+      font-weight: bold;
+    }
+    margin-bottom: 10px;
+  }
+
+  hr {
+    width: 50%;
+    margin: 10px 0;
+  }
+
+  .icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    span {
+      width: auto;
+      padding: 5px;
+      background-color: lightgray;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darkgray;
+      }
+    }
   }
 }
 .join-us {

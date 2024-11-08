@@ -1,0 +1,104 @@
+.projects-overview {
+  text-align: center;
+  margin: 40px 0;
+}
+.projects-overview h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.projects-overview p {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #333;
+}
+
+.project-container {
+  text-align: center;
+  padding: 20px;
+}
+.project-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.project-container .project-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+.project-container .project-content .project-image {
+  flex: 1;
+}
+.project-container .project-content .project-image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+}
+.project-container .project-content .project-description {
+  flex: 1;
+  text-align: left;
+  max-width: 600px;
+}
+.project-container .project-content .project-description p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.project-container .project-content .project-description .learn-more {
+  display: inline-block;
+  margin-top: 20px;
+}
+.project-container .project-content .project-description .learn-more button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+.project-container .project-content .project-description .learn-more button:hover {
+  background-color: #0056b3;
+}
+.project-container .project-content .project-description .learn-more button:focus {
+  outline: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.message-box {
+  border: 2px solid black;
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+  width: 300px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.message-box p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.join-btn {
+  border: 2px solid black;
+  background-color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+.join-btn:hover {
+  background-color: #ccc;
+}
+
+/*# sourceMappingURL=styles.css.map */
