@@ -76,8 +76,7 @@ footer div:last-of-type {
   line-height: 1.6;
   color: #555;
 }
-
-.main-card-leaders-info {
+.meetOurTeam-info .main-card-leaders-info {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -85,8 +84,8 @@ footer div:last-of-type {
   margin: 0 auto;
   padding: 20px;
 }
-.main-card-leaders-info .card-leaders-info,
-.main-card-leaders-info .card-leaders-info-reverse {
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info,
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -95,52 +94,59 @@ footer div:last-of-type {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.main-card-leaders-info .card-leaders-info img,
-.main-card-leaders-info .card-leaders-info-reverse img {
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info img,
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse img {
   width: 300px;
   height: 300px;
   border-radius: 8px;
   object-fit: cover;
 }
-.main-card-leaders-info .card-leaders-info div,
-.main-card-leaders-info .card-leaders-info-reverse div {
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info div,
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse div {
   flex: 1;
 }
-.main-card-leaders-info .card-leaders-info div h1,
-.main-card-leaders-info .card-leaders-info-reverse div h1 {
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info div h1,
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse div h1 {
   font-size: 1.5rem;
   margin: 0;
   color: #3c3c3c;
 }
-.main-card-leaders-info .card-leaders-info div h3,
-.main-card-leaders-info .card-leaders-info-reverse div h3 {
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info div h3,
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse div h3 {
   font-size: 1.1rem;
   margin: 5px 0;
   color: #555;
 }
-.main-card-leaders-info .card-leaders-info div p,
-.main-card-leaders-info .card-leaders-info-reverse div p {
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info div p,
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse div p {
   font-size: 0.9rem;
   line-height: 1.6;
   color: #555;
 }
-.main-card-leaders-info .card-leaders-info-reverse {
+.meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse {
   flex-direction: row-reverse;
 }
-
-.department-info {
+.meetOurTeam-info .department-info {
   width: 100%;
   text-align: center;
   padding: 20px;
 }
-
-.department-info p {
-  font-size: 1em;
-  color: #555;
+.meetOurTeam-info .department-info .department {
+  margin-bottom: 40px;
+}
+.meetOurTeam-info .department-info .department .headerOfDepartment {
   margin-bottom: 20px;
 }
-
-.members {
+.meetOurTeam-info .department-info .department .headerOfDepartment h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3c3c3c;
+}
+.meetOurTeam-info .department-info .department .headerOfDepartment p {
+  font-size: 1rem;
+  color: #555;
+}
+.meetOurTeam-info .department-info .department .members {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,9 +154,8 @@ footer div:last-of-type {
   flex-wrap: wrap;
   padding: 20px;
 }
-
-.department-card {
-  width: calc((100% - 60px) / 3);
+.meetOurTeam-info .department-info .department .department-card {
+  width: calc((100% - 50px) / 3);
   max-width: 300px;
   background-color: #fff;
   display: flex;
@@ -161,42 +166,40 @@ footer div:last-of-type {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
-.department-card img {
+.meetOurTeam-info .department-info .department .department-card img {
   width: 70%;
   aspect-ratio: 1/1;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 15px;
 }
-.department-card p {
+.meetOurTeam-info .department-info .department .department-card p {
   margin-bottom: 10px;
 }
-.department-card p:first-of-type {
+.meetOurTeam-info .department-info .department .department-card p:first-of-type {
   font-weight: bold;
 }
-.department-card hr {
+.meetOurTeam-info .department-info .department .department-card hr {
   width: 50%;
   margin: 10px 0;
 }
-.department-card .icon-box {
+.meetOurTeam-info .department-info .department .department-card .icon-box {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
-.department-card .icon-box span {
-  width: auto;
+.meetOurTeam-info .department-info .department .department-card .icon-box span {
   padding: 5px;
-  background-color: #555;
+  background-color: #ddd;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.department-card .icon-box span:hover {
-  background-color: #555;
+.meetOurTeam-info .department-info .department .department-card .icon-box span:hover {
+  background-color: #0056b3;
 }
-
-.join-us {
+.meetOurTeam-info .join-us {
   background-color: #fff;
   text-align: center;
   max-width: 400px;
@@ -207,11 +210,11 @@ footer div:last-of-type {
   box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.join-us p {
+.meetOurTeam-info .join-us p {
   margin-bottom: 1.5rem;
   color: #3c3c3c;
 }
-.join-us button {
+.meetOurTeam-info .join-us button {
   background-color: #fff;
   color: #3c3c3c;
   padding: 10px 20px;
@@ -220,7 +223,7 @@ footer div:last-of-type {
   border: 1px solid #ddd;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-.join-us button:hover {
+.meetOurTeam-info .join-us button:hover {
   background-color: #0056b3;
   color: #fff;
 }
