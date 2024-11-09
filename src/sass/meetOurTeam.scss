@@ -12,13 +12,13 @@
     font-size: 1.8rem;
     margin-bottom: 15px;
     font-weight: bold;
-    color: #333;
+    color: c.$black;
   }
 
   p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #555;
+    color: c.$grey;
   }
 }
 
@@ -36,7 +36,7 @@
     align-items: center;
     gap: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid c.$border;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
@@ -53,19 +53,19 @@
       h1 {
         font-size: 1.5rem;
         margin: 0;
-        color: #333;
+        color: c.$black;
       }
 
       h3 {
         font-size: 1.1rem;
         margin: 5px 0;
-        color: #777;
+        color: c.$grey;
       }
 
       p {
         font-size: 0.9rem;
         line-height: 1.6;
-        color: #555;
+        color: c.$grey;
       }
     }
   }
@@ -84,7 +84,7 @@
 
 .department-info p {
   font-size: 1em;
-  color: #666;
+  color: c.$grey;
   margin-bottom: 20px; 
 }
 
@@ -98,9 +98,9 @@
 }
 
 .department-card {
-  width: calc((100% - 60px) / 3); // Ensures 3 cards fit in one row
-  max-width: 300px; // Prevents cards from becoming too wide
-  background-color: aquamarine;
+  width: calc((100% - 60px) / 3); 
+  max-width: 300px; 
+  background-color: c.$white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -138,13 +138,13 @@
     span {
       width: auto;
       padding: 5px;
-      background-color: lightgray;
+      background-color: c.$grey;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
 
       &:hover {
-        background-color: darkgray;
+        background-color: c.$grey;
       }
     }
   }

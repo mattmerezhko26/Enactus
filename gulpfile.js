@@ -10,4 +10,3 @@ function watchSass() {
 }
 
 exports.default = series(compileSass, watchSass);
-exports.build = series();

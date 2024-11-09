@@ -69,7 +69,7 @@ footer div:last-of-type {
   font-size: 1.8rem;
   margin-bottom: 15px;
   font-weight: bold;
-  color: #333;
+  color: #3c3c3c;
 }
 .meetOurTeam-info p {
   font-size: 1rem;
@@ -91,7 +91,7 @@ footer div:last-of-type {
   align-items: center;
   gap: 20px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -110,13 +110,13 @@ footer div:last-of-type {
 .main-card-leaders-info .card-leaders-info-reverse div h1 {
   font-size: 1.5rem;
   margin: 0;
-  color: #333;
+  color: #3c3c3c;
 }
 .main-card-leaders-info .card-leaders-info div h3,
 .main-card-leaders-info .card-leaders-info-reverse div h3 {
   font-size: 1.1rem;
   margin: 5px 0;
-  color: #777;
+  color: #555;
 }
 .main-card-leaders-info .card-leaders-info div p,
 .main-card-leaders-info .card-leaders-info-reverse div p {
@@ -136,7 +136,7 @@ footer div:last-of-type {
 
 .department-info p {
   font-size: 1em;
-  color: #666;
+  color: #555;
   margin-bottom: 20px;
 }
 
@@ -152,7 +152,7 @@ footer div:last-of-type {
 .department-card {
   width: calc((100% - 60px) / 3);
   max-width: 300px;
-  background-color: aquamarine;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -187,13 +187,13 @@ footer div:last-of-type {
 .department-card .icon-box span {
   width: auto;
   padding: 5px;
-  background-color: lightgray;
+  background-color: #555;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 .department-card .icon-box span:hover {
-  background-color: darkgray;
+  background-color: #555;
 }
 
 .join-us {
