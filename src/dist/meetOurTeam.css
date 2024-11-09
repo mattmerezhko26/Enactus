@@ -148,10 +148,8 @@ footer div:last-of-type {
 }
 .meetOurTeam-info .department-info .department .members {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
   padding: 20px;
 }
 .meetOurTeam-info .department-info .department .department-card {
