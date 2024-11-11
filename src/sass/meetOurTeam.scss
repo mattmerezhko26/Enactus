@@ -2,160 +2,119 @@
 @use './common' as com;
 @use './navAndFooter.scss';
 
-.meetOurTeam-info {
+main {
   max-width: 1030px;
-  margin: 0 auto;
+  margin: 20px auto;
   text-align: center;
-  padding: 20px;
-
-  h1 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    font-weight: bold;
-    color: c.$black;
+  color: c.$black;
+  >h3 {
+    margin-bottom: 20px;
   }
 
-  p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: c.$grey;
-  }
-
-  
-  .main-card-leaders-info {
+  .leaders {
+    max-width: 800px;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
 
-    .card-leaders-info,
-    .card-leaders-info-reverse {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
+    >div {
       border: 1px solid c.$border;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      
       img {
         width: 300px;
-        height: 300px;
+        aspect-ratio: 1 / 1;
         border-radius: 8px;
         object-fit: cover;
       }
 
       div {
         flex: 1;
+        color: c.$grey;
+      }
 
-        h1 {
-          font-size: 1.5rem;
-          margin: 0;
-          color: c.$black;
-        }
-
-        h3 {
-          font-size: 1.1rem;
-          margin: 5px 0;
-          color: c.$grey;
-        }
-
-        p {
-          font-size: 0.9rem;
-          line-height: 1.6;
-          color: c.$grey;
-        }
+      &:nth-of-type(odd) {
+        flex-direction: row-reverse;
       }
     }
-
-    .card-leaders-info-reverse {
-      flex-direction: row-reverse;
-    }
-  }
-
-  
-  .department-info {
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-
-
   }
 
   .department {
-    margin-bottom: 40px;
-
-    .headerOfDepartment {
-      margin-bottom: 20px;
-
-      h2 {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: c.$black;
-      }
-
-      p {
-        font-size: 1rem;
-        color: c.$grey;
-      }
+    >h2 {
+      margin: 40px 0px 20px 0;
     }
 
-    .members {
+    &-box {
       display: flex;
       align-items: center;
-      gap: 20px;
-      padding: 20px;
+      flex-wrap: wrap;
+      gap: calc((100% - 240px * 4) / 3);
     }
 
-    .department-card {
-      width: calc((100% - 50px) / 3);
-      max-width: 300px;
-      background-color: c.$white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
+    &-card {
+      max-width: 240px;
+      min-height: 325px;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
+      margin-top: 20px;
+      padding: 20px 15px;
+      box-sizing: border-box;
+      position: relative;
 
       img {
-        width: 70%;
+        width: 100%;
         aspect-ratio: 1 / 1;
         border-radius: 50%;
         object-fit: cover;
-        margin-bottom: 15px;
       }
 
-      p {
-        &:first-of-type {
-          font-weight: bold;
-        }
-        margin-bottom: 10px;
-      }
-
-      hr {
-        width: 50%;
-        margin: 10px 0;
-      }
-
-      .icon-box {
+      >div {
+        min-height: calc(50px*2 + 1px + 15px);
+        margin-top: 15px;
+        padding-bottom: 25px;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
+        p {
+          height: 50px;
+          &:first-of-type {
+            font-weight: bold;
+          }
+        }
+  
+        hr {
+          width: 50%;
+          border: 0.5px solid c.$black
+        }
+      }
 
-        span {
-          padding: 5px;
-          background-color: c.$border;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: background-color 0.3s;
 
-          &:hover {
-            background-color: c.$hover-background;
+      ol {
+        display: flex;
+        gap: 20px;
+        position: absolute;
+        bottom: 20px;
+        left: calc(50% - 140px/2);
+
+        li {
+          width: 20px;
+          aspect-ratio: 1 / 1;
+
+          svg {
+            width: 100%;
+            height: 100%;
+            fill: c.$seneca;
+
+            &:hover {
+              fill: c.$main;
+            }
           }
         }
       }
