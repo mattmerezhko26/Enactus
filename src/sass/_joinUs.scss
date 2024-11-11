@@ -1,0 +1,24 @@
+@use 'colors' as c;
+@use 'mixins' as m;
+@use 'variables' as v;
+
+.join-us {
+  background-color: c.$white;
+  text-align: center;
+  max-width: m.rem(400);
+  border: 2px solid c.$border;
+  border-radius: v.$border-radius;
+  margin: m.rem(40) auto;
+  padding: m.rem(16);
+  box-sizing: border-box;
+  @include m.box-shadow;
+
+  p {
+    margin-bottom: m.rem(16);
+    color: c.$black;
+  }
+
+  button {
+    @include m.button-style(c.$white, c.$border, c.$black, c.$hover-background, c.$white);
+  }
+}

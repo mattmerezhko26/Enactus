@@ -1,4 +1,4 @@
-@use './colors' as c;
+@use 'sass:math' as math;
 
 @mixin font-break($line: 1) {
   word-break: break-all;
@@ -26,12 +26,10 @@
   }
 }
 
-h3 {
-  font-size: 32px;
-}
-p {
-  font-size: 16px;
-}
-span, p {
-  line-height: 1.5;
+@function rem($px) {
+  @if math.is-unitless($px) {
+    @return math.div($px, 16) * 1rem;
+  } @else {
+    @error "The value passed to the rem() function must be unitless.";
+  }
 }

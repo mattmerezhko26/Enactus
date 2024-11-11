@@ -1,25 +1,50 @@
 @use './colors.scss' as c;
+@use './mixins.scss' as m;
+@use './variables.scss' as v;
 
+// main
+main {
+  color: c.$black;
+  width: v.$width;
+  margin: 0 auto;
+  padding: m.rem(40) 0;
+  box-sizing: border-box;
+}
+h3 {
+  font-size: v.$mainHeader;
+}
+p {
+  font-size: v.$mainText;
+}
+span,
+p {
+  line-height: v.$mainLineHeight;
+}
+img {
+  object-fit: cover;
+}
+
+// navbar
 nav {
   border-bottom: 1px solid c.$black;
-  padding: 10px 60px;
+  padding: m.rem(10) m.rem(60);
   display: flex;
   align-items: center;
   justify-content: space-between;
   img {
-    height: 44px;
+    height: m.rem(44);
   }
   ol {
     display: flex;
     li {
       &:nth-child(-n + 3)::after {
         content: '|';
-        margin: 0 10px;
+        margin: 0 m.rem(10);
       }
     }
     a {
       color: c.$black;
-      font-size: 20px;
+      font-size: v.$subHeader;
       text-decoration: none;
       &:hover {
         text-decoration: underline;
@@ -28,19 +53,20 @@ nav {
   }
 }
 
+// footer
 footer {
   color: c.$white;
   background-color: c.$black;
-  padding: 20px 60px;
-  margin-top: 40px;
+  padding: m.rem(20) m.rem(60);
+  margin-top: m.rem(40);
   display: grid;
-  gap: 80px;
+  gap: m.rem(80);
   grid-template-columns: 1fr 1fr 1fr;
   div {
     p {
       line-height: 1;
       &:last-of-type {
-        margin-top: 10px;
+        margin-top: m.rem(10);
       }
     }
     a {
