@@ -27,15 +27,11 @@ img {
 // navbar
 nav {
   border-bottom: 1px solid c.$black;
-  padding: m.rem(10) m.rem(60);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: m.rem(10) m.rem(60) !important;
   img {
     height: m.rem(44);
   }
   ol {
-    display: flex;
     li {
       &:nth-child(-n + 3)::after {
         content: '|';
@@ -45,9 +41,8 @@ nav {
     a {
       color: c.$black;
       font-size: v.$subHeader;
-      text-decoration: none;
       &:hover {
-        text-decoration: underline;
+        color: c.$seneca;
       }
     }
   }
