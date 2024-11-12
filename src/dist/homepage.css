@@ -35,6 +35,21 @@ nav ol a {
 nav ol a:hover {
   text-decoration: underline;
 }
+@media (max-width: 760px) {
+  nav {
+    padding: 10px 20px;
+    flex-direction: colomn;
+    align-items: flex-start;
+  }
+  nav ol {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  nav ol li:nth-child(-n+3)::after {
+    content: none;
+  }
+}
 
 footer {
   color: #fff;
@@ -57,6 +72,28 @@ footer div a {
 footer div:last-of-type {
   margin: 0 auto;
   text-align: center;
+}
+@media (max-width: 760px) {
+  footer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  footer div {
+    text-align: center;
+    margin: 0;
+  }
+  footer div:last-of-type {
+    text-align: center;
+  }
+  footer div p {
+    font-size: 14px;
+  }
+  footer div a {
+    font-size: 14px;
+    text-decoration: underline;
+  }
 }
 
 .mainPhoto {
@@ -85,6 +122,15 @@ footer div:last-of-type {
 .mainPhoto div p:first-of-type {
   font-weight: bold;
 }
+@media (max-width: 760px) {
+  .mainPhoto img {
+    height: 200px;
+  }
+  .mainPhoto div {
+    font-size: 24px;
+    gap: 5px;
+  }
+}
 
 .info {
   width: 1030px;
@@ -97,8 +143,9 @@ footer div:last-of-type {
   margin: 40px 0;
 }
 .info img {
-  max-height: 300px;
-  object-fit: cover;
+  grid-column: 1/2;
+  width: 100%;
+  aspect-ratio: 4/3;
 }
 .info div.enactus, .info div.about {
   display: flex;
@@ -126,6 +173,36 @@ footer div:last-of-type {
 .info div.about span {
   justify-self: end;
 }
+@media (max-width: 760px) {
+  .info {
+    width: 90%;
+    padding: 15px;
+  }
+  .info h3 {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  .info div.enactus, .info div.about {
+    display: block;
+    text-align: left;
+  }
+  .info div.enactus span, .info div.about span {
+    width: 100%;
+    font-size: 14px;
+  }
+  .info div.about {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
+  }
+  .info div.about img {
+    width: 100%;
+    aspect-ratio: auto;
+  }
+  .info div.about span {
+    justify-self: start;
+  }
+}
 
 .swiper {
   max-height: 300px;
@@ -134,7 +211,8 @@ footer div:last-of-type {
   max-height: 300px;
   aspect-ratio: 1/1;
 }
-.swiper-slide img, .swiper-slide div {
+.swiper-slide img,
+.swiper-slide div {
   width: 246.25px;
 }
 .swiper-slide img {
@@ -157,4 +235,17 @@ footer div:last-of-type {
 .swiper-slide div p:first-of-type {
   font-size: 20px;
   font-weight: bold;
+}
+@media (max_width: 760px) {
+  .swiper-slide img,
+  .swiper-slide div {
+    width: 100%;
+  }
+  .swiper-slide div {
+    height: 40px;
+    padding: 0 10px;
+  }
+  .swiper-slide p {
+    font-size: 16px;
+  }
 }

@@ -27,7 +27,19 @@
       font-weight: bold;
     }
   }
+  @media (max-width: 760px) {
+    //adjustments for screen smaller than 760px(like phones)
+    img {
+      height: 200px; //decreasing
+    }
+    div {
+      //for readability((
+      font-size: 24px;
+      gap: 5px;
+    }
+  }
 }
+
 .info {
   width: 1030px;
   padding: 25px 0;
@@ -38,11 +50,13 @@
     margin: 40px 0;
   }
   img {
-    max-height: 300px;
-    object-fit: cover;
+    grid-column: 1 / 2;
+    width: 100%;
+    aspect-ratio: 4/3;
   }
   div {
-    &.enactus, &.about {
+    &.enactus,
+    &.about {
       display: flex;
       justify-content: space-between;
       span {
@@ -69,13 +83,49 @@
       }
     }
   }
+  @media (max-width: 760px) {
+    width: 90%;
+    padding: 15px;
+    h3 {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+    div {
+      //here we have to switch to vertical layout
+      &.enactus,
+      &.about {
+        display: block;
+        text-align: left;
+        span {
+          width: 100%;
+          font-size: 14px;
+        }
+      }
+      &.about {
+        grid-template-columns: 1fr; //Not sure about, but it works
+        grid-template-rows: auto auto;
+        gap: 10px;
+
+        img {
+          width: 100%;
+          aspect-ratio: auto;
+        }
+
+        span {
+          justify-self: start; // Aligning this to the start
+        }
+      }
+    }
+  }
 }
+
 .swiper {
   max-height: 300px;
   &-slide {
     max-height: 300px;
     aspect-ratio: 1 / 1;
-    img, div {
+    img,
+    div {
       width: calc((1030px - 15px * 3) / 4);
     }
     img {
@@ -97,6 +147,21 @@
           font-size: 20px;
           font-weight: bold;
         }
+      }
+    }
+  }
+  @media (max_width: 760px) {
+    &-slide {
+      img,
+      div {
+        width: 100%;
+      }
+      div {
+        height: 40px;
+        padding: 0 10px;
+      }
+      p {
+        font-size: 16px;
       }
     }
   }

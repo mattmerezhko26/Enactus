@@ -35,6 +35,21 @@ nav ol a {
 nav ol a:hover {
   text-decoration: underline;
 }
+@media (max-width: 760px) {
+  nav {
+    padding: 10px 20px;
+    flex-direction: colomn;
+    align-items: flex-start;
+  }
+  nav ol {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  nav ol li:nth-child(-n+3)::after {
+    content: none;
+  }
+}
 
 footer {
   color: #fff;
@@ -57,6 +72,28 @@ footer div a {
 footer div:last-of-type {
   margin: 0 auto;
   text-align: center;
+}
+@media (max-width: 760px) {
+  footer {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  footer div {
+    text-align: center;
+    margin: 0;
+  }
+  footer div:last-of-type {
+    text-align: center;
+  }
+  footer div p {
+    font-size: 14px;
+  }
+  footer div a {
+    font-size: 14px;
+    text-decoration: underline;
+  }
 }
 
 .meetOurTeam-info {

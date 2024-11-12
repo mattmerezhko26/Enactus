@@ -26,6 +26,21 @@ nav {
       }
     }
   }
+  @media (max-width: 760px) {
+    padding: 10px 20px;
+    flex-direction: colomn;
+    align-items: flex-start;
+    ol {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+      li {
+        &:nth-child(-n + 3)::after {
+          content: none;
+        }
+      }
+    }
+  }
 }
 
 footer {
@@ -49,6 +64,26 @@ footer {
     &:last-of-type {
       margin: 0 auto;
       text-align: center;
+    }
+  }
+  @media (max-width: 760px) {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    div {
+      text-align: center;
+      margin: 0;
+      &:last-of-type {
+        text-align: center;
+      }
+      p {
+        font-size: 14px;
+      }
+      a {
+        font-size: 14px;
+        text-decoration: underline;
+      }
     }
   }
 }
