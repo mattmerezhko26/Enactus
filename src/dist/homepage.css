@@ -12,19 +12,36 @@ span, p {
 
 nav {
   border-bottom: 1px solid #3c3c3c;
-  padding: 10px 60px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 nav img {
   height: 44px;
 }
+nav #menu-toggle {
+  display: none;
+}
+nav .menu-icon {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+nav .menu-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #FFD200;
+  transition: all 0.3s ease;
+}
 nav ol {
   display: flex;
+  gap: 15px;
 }
 nav ol li:nth-child(-n+3)::after {
-  content: "|";
   margin: 0 10px;
 }
 nav ol a {
@@ -37,17 +54,26 @@ nav ol a:hover {
 }
 @media (max-width: 760px) {
   nav {
-    padding: 10px 20px;
-    flex-direction: colomn;
-    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  nav .menu-icon {
+    display: flex;
   }
   nav ol {
+    display: none;
     flex-direction: column;
     gap: 10px;
-    margin-top: 10px;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 200px;
+    border: 1px solid #3c3c3c;
+    padding: 10px;
+    border-radius: 5px;
   }
-  nav ol li:nth-child(-n+3)::after {
-    content: none;
+  nav #menu-toggle:checked + .menu-icon + ol {
+    display: flex;
   }
 }
 
@@ -98,6 +124,7 @@ footer div:last-of-type {
 
 .mainPhoto {
   position: relative;
+  z-index: 1;
 }
 .mainPhoto img {
   width: 100%;
@@ -118,6 +145,7 @@ footer div:last-of-type {
   gap: 10px;
   position: absolute;
   top: 0;
+  z-index: 1;
 }
 .mainPhoto div p:first-of-type {
   font-weight: bold;
@@ -130,6 +158,11 @@ footer div:last-of-type {
     font-size: 24px;
     gap: 5px;
   }
+}
+
+nav {
+  position: relative;
+  z-index: 2;
 }
 
 .info {
