@@ -7,11 +7,11 @@
   position: relative;
   img {
     width: 100%;
-    height: m.rem(300);
+    height: m.rem(350);
+    filter: brightness(0.5);
   }
   div {
     color: c.$white;
-    background-color: rgba(0, 0, 0, 0.5);
     font-size: m.rem(32);
     width: 100%;
     height: 100%;
@@ -71,25 +71,25 @@ main {
     max-height: m.rem(300);
     aspect-ratio: 1 / 1;
     img, div {
-      width: calc((m.rem(1030) - m.rem(15) * 3) / 4);
+      width: calc((m.rem(1030) - 15px * 3) / 4);
     }
     img {
-      height: 100%;
-      border-radius: v.$border-radius;
+      aspect-ratio: 1 / 1;
     }
     div {
       background-color: rgba(0, 0, 0, 0.5);
       height: 60px;
       border-radius: 0 0 m.rem(10) v.$border-radius;
-      padding: 0 m.rem(15);
-      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       position: absolute;
       bottom: 0;
       p {
         color: c.$white;
         text-align: center;
         &:first-of-type {
-          font-size: m.rem(16);
           font-weight: bold;
         }
       }
