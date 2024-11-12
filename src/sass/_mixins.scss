@@ -1,5 +1,13 @@
 @use 'sass:math' as math;
 
+@function rem($px) {
+  @if math.is-unitless($px) {
+    @return math.div($px, 16) * 1rem;
+  } @else {
+    @error "The value passed to the rem() function must be unitless.";
+  }
+}
+
 @mixin font-break($line: 1) {
   word-break: break-all;
   display: -webkit-box;
@@ -8,9 +16,11 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
 @mixin box-shadow {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 @mixin button-style($button-background-color, $border-color, $text-color, $hover-background, $hover-text-color) {
   background-color: $button-background-color;
   color: $text-color;
@@ -23,13 +33,5 @@
   &:hover {
     background-color: $hover-background;
     color: $hover-text-color;
-  }
-}
-
-@function rem($px) {
-  @if math.is-unitless($px) {
-    @return math.div($px, 16) * 1rem;
-  } @else {
-    @error "The value passed to the rem() function must be unitless.";
   }
 }
