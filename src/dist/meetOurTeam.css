@@ -126,25 +126,25 @@ footer div:last-of-type {
   max-width: 1030px;
   margin: 0 auto;
   text-align: center;
-  padding: 20px;
+  padding: 40px 20px;
 }
 .meetOurTeam-info h1 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+  font-size: 2rem;
+  margin-bottom: 20px;
   font-weight: bold;
   color: #3c3c3c;
 }
 .meetOurTeam-info p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   color: #555;
 }
 .meetOurTeam-info .main-card-leaders-info {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 800px;
-  margin: 0 auto;
+  gap: 30px;
+  max-width: 900px;
+  margin: 40px auto;
   padding: 20px;
 }
 .meetOurTeam-info .main-card-leaders-info .card-leaders-info,
@@ -152,26 +152,29 @@ footer div:last-of-type {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 .meetOurTeam-info .main-card-leaders-info .card-leaders-info img,
 .meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse img {
-  width: 300px;
-  height: 300px;
+  width: 40%;
+  max-width: 300px;
+  height: auto;
   border-radius: 8px;
   object-fit: cover;
 }
 .meetOurTeam-info .main-card-leaders-info .card-leaders-info div,
 .meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse div {
   flex: 1;
+  padding: 10px;
 }
 .meetOurTeam-info .main-card-leaders-info .card-leaders-info div h1,
 .meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse div h1 {
   font-size: 1.5rem;
-  margin: 0;
+  margin: 0 0 10px;
   color: #3c3c3c;
 }
 .meetOurTeam-info .main-card-leaders-info .card-leaders-info div h3,
@@ -189,19 +192,31 @@ footer div:last-of-type {
 .meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse {
   flex-direction: row-reverse;
 }
+@media (max-width: 760px) {
+  .meetOurTeam-info .main-card-leaders-info .card-leaders-info,
+  .meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse {
+    flex-direction: column;
+    align-items: center;
+  }
+  .meetOurTeam-info .main-card-leaders-info .card-leaders-info img,
+  .meetOurTeam-info .main-card-leaders-info .card-leaders-info-reverse img {
+    width: 100%;
+    border-radius: 8px;
+  }
+}
 .meetOurTeam-info .department-info {
   width: 100%;
   text-align: center;
-  padding: 20px;
+  padding: 20px 0;
 }
 .meetOurTeam-info .department-info .department {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 .meetOurTeam-info .department-info .department .headerOfDepartment {
   margin-bottom: 20px;
 }
 .meetOurTeam-info .department-info .department .headerOfDepartment h2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #3c3c3c;
 }
@@ -211,12 +226,12 @@ footer div:last-of-type {
 }
 .meetOurTeam-info .department-info .department .members {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
-  padding: 20px;
+  justify-content: center;
 }
 .meetOurTeam-info .department-info .department .department-card {
-  width: calc((100% - 50px) / 3);
+  flex: 1;
   max-width: 300px;
   background-color: #fff;
   display: flex;
@@ -226,6 +241,7 @@ footer div:last-of-type {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-bottom: 20px;
 }
 .meetOurTeam-info .department-info .department .department-card img {
   width: 70%;
@@ -260,10 +276,19 @@ footer div:last-of-type {
 .meetOurTeam-info .department-info .department .department-card .icon-box span:hover {
   background-color: #0056b3;
 }
+@media (max-width: 760px) {
+  .meetOurTeam-info .department-info .department .members {
+    flex-direction: column;
+    align-items: center;
+  }
+  .meetOurTeam-info .department-info .department .department-card {
+    width: 100%;
+  }
+}
 .meetOurTeam-info .join-us {
   background-color: #fff;
   text-align: center;
-  max-width: 400px;
+  max-width: 500px;
   border: 2px solid #ddd;
   border-radius: 8px;
   margin: 40px auto;
@@ -287,4 +312,10 @@ footer div:last-of-type {
 .meetOurTeam-info .join-us button:hover {
   background-color: #0056b3;
   color: #fff;
+}
+@media (max-width: 480px) {
+  .meetOurTeam-info .join-us {
+    width: 90%;
+    padding: 1rem;
+  }
 }
