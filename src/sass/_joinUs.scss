@@ -1,16 +1,10 @@
 @use 'colors' as c;
 @use 'mixins' as m;
-@use 'variables' as v;
 
 .join-us {
-  background-color: c.$white;
   text-align: center;
   max-width: m.rem(400);
-  border: 2px solid c.$border;
-  border-radius: v.$border-radius;
   margin: m.rem(40) auto;
-  padding: m.rem(16);
-  box-sizing: border-box;
   @include m.box-shadow;
 
   p {
@@ -20,5 +14,11 @@
 
   button {
     @include m.button-style(c.$white, c.$border, c.$black, c.$hover-background, c.$white);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .join-us {
+    margin: m.rem(20) !important;
   }
 }

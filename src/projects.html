@@ -30,14 +30,14 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-xxl">
+  <nav class="navbar navbar-expand-sm">
     <div class="container-fluid">
       <a href="/" class="navbar-brand"><img src="./images/Enactus-Gray-200x88.png" alt="enactus seneca logo" /></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse flex-grow-0">
+      <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
         <ol class="navbar-nav">
           <li class="nav-item"><a href="index.html">Home</a></li>
           <li class="nav-item"><a href="projects.html">Projects</a></li>
@@ -47,74 +47,94 @@
       </div>
     </div>
   </nav>
-  <main>
-    <h3>Projects Overview</h3>
+  <main class="container">
+    <h2>Projects Overview</h2>
     <p>
       This year, Enactus is focusing on social, economic, and environmental health projects in both our surrounding
       community and our global community.
     </p>
-    <h3>Projects</h3>
-    <div class="card-box">
-      <div class="card-items">
-        <img src="https://fakeimg.pl/600/" alt="Project Image" />
-        <div>
-          <p>
-            Please briefly explain the purpose of this project and its intended use, keeping the response concise—no
-            more
-            than 2-3 sentences.
-          </p>
-          <a href="#" class="button-link">Learn More About it</a>
+    <h2>Projects</h2>
+    <div class="card-box card-group row">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card-items card border-0">
+          <img class="card-img-top" src="https://fakeimg.pl/600/" alt="Project Image" />
+          <div class="card-body text-center">
+            <p class="card-text">
+              Please briefly explain the purpose of this project and its intended use, keeping the response concise—no
+              more
+              than 2-3 sentences.
+            </p>
+            <a href="#" class="button-link align-self-center">Learn More About it</a>
+          </div>
         </div>
       </div>
-
-      <div class="card-items">
-        <img src="https://fakeimg.pl/600/" alt="Project Image" />
-        <div>
-          <p>
-            Please briefly explain the purpose of this project and its intended use, keeping the response concise—no
-            more
-            than 2-3 sentences.
-          </p>
-          <a href="#" class="button-link">Learn More About it</a>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card-items card border-0 align-items-center">
+          <img class="card-img-top" src="https://fakeimg.pl/600/" alt="Project Image" />
+          <div class="card-body text-center">
+            <p class="card-text">
+              Please briefly explain the purpose of this project and its intended use, keeping the response concise—no
+              more
+              than 2-3 sentences.
+            </p>
+            <a href="#" class="button-link">Learn More About it</a>
+          </div>
         </div>
       </div>
-
-      <div class="card-items">
-        <img src="https://fakeimg.pl/600/" alt="Project Image" />
-        <div>
-          <p>
-            Please briefly explain the purpose of this project and its intended use, keeping the response concise—no
-            more
-            than 2-3 sentences.
-          </p>
-          <a href="#" class="button-link">Learn More About it</a>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card-items card border-0 align-items-center">
+          <img class="card-img-top" src="https://fakeimg.pl/600/" alt="Project Image" />
+          <div class="card-body text-center">
+            <p class="card-text">
+              Please briefly explain the purpose of this project and its intended use, keeping the response concise—no
+              more
+              than 2-3 sentences.
+            </p>
+            <a href="#" class="button-link">Learn More About it</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card-items card border-0 align-items-center">
+          <img class="card-img-top" src="https://fakeimg.pl/600/" alt="Project Image" />
+          <div class="card-body text-center">
+            <p class="card-text">
+              Please briefly explain the purpose of this project and its intended use, keeping the response concise—no
+              more
+              than 2-3 sentences.
+            </p>
+            <a href="#" class="button-link">Learn More About it</a>
+          </div>
         </div>
       </div>
     </div>
   </main>
-
-  <div class="join-us">
-    <p>
-      Let’s work together and better the Seneca Community.
-      Want to join one of the most impactful worldwide networks for social entrepreneurship?
-      Want to make a difference in the world of today and tomorrow?
-    </p>
-    <button>Join our Team</button>
+  <div class="join-us card border-2 p-0">
+    <div class="card-body p-4">
+      <p class="card-text">
+        Let’s work together and better the Seneca Community.
+        Want to join one of the most impactful worldwide networks for social entrepreneurship?
+        Want to make a difference in the world of today and tomorrow?
+      </p>
+      <button type="button" class="btn">Join our Team</button>
+    </div>
   </div>
 
-
-  <footer id="footer">
-    <div>
-      <p><a href="/">Enactus Seneca</a></p>
-      <p>1750 Finch Ave E, North York, ON M2J 2X5</p>
-    </div>
-    <div>
-      <a href="https://www.facebook.com/enactusseneca/" target="_blank">facebook</a>
-      <a href="https://www.instagram.com/enactussenecapolytechnic/" target="_blank">instagram</a>
-      <a href="https://www.linkedin.com/company/enactus-senecapolytechnic/" target="_blank">linkedin</a>
-      <p>© 2024 Enactus Seneca all rights reserved</p>
+  <footer id="footer" class="container-fluid p-4">
+    <div class="row">
+      <div class="col-md-4 col-sm-12">
+        <p><a href="/">Enactus Seneca</a></p>
+        <p>1750 Finch Ave E, North York, ON M2J 2X5</p>
+      </div>
+      <div class="col-md-4 col-sm-12 d-block text-center ">
+        <a href="https://www.facebook.com/enactusseneca/" target="_blank">facebook</a>
+        <a href="https://www.instagram.com/enactussenecapolytechnic/" target="_blank">instagram</a>
+        <a href="https://www.linkedin.com/company/enactus-senecapolytechnic/" target="_blank">linkedin</a>
+        <p>© 2024 Enactus Seneca all rights reserved</p>
+      </div>
     </div>
   </footer>
+  <script src="./js/navbar.js"></script>
 </body>
 
 </html>

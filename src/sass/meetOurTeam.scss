@@ -7,35 +7,30 @@
 main {
   text-align: center;
 
-  > h3 {
-    margin-bottom: m.rem(20);
+  >p {
+    margin: m.rem(20) 0 !important;
   }
 
   .leaders {
     max-width: m.rem(800);
     margin: m.rem(20) auto;
-    display: flex;
-    flex-direction: column;
     gap: m.rem(20);
-
+    
     > div {
       border: 1px solid c.$border;
       border-radius: v.$border-radius;
       padding: m.rem(20);
-      box-sizing: border-box;
-      display: flex;
+      flex-direction: row;
       align-items: center;
-      gap: m.rem(20);
       @include m.box-shadow;
 
       img {
-        width: m.rem(300);
+        max-width: m.rem(300);
         aspect-ratio: 1 / 1;
         border-radius: v.$border-radius;
       }
 
       div {
-        flex: 1;
         color: c.$grey;
       }
 
@@ -50,13 +45,6 @@ main {
       margin: m.rem(40) 0px m.rem(20) 0;
     }
 
-    &-box {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: calc((100% - m.rem(240) * 4) / 3);
-    }
-
     &-card {
       max-width: m.rem(240);
       min-height: m.rem(325);
@@ -64,10 +52,6 @@ main {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       margin-top: m.rem(20);
       padding: m.rem(20) m.rem(15);
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       position: relative;
 
       img {
@@ -117,6 +101,14 @@ main {
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 576px)  {
+  .leaders {
+    .card {
+      display: block !important;
     }
   }
 }

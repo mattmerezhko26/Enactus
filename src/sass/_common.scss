@@ -5,13 +5,9 @@
 // main
 main {
   color: c.$black;
-  width: v.$width;
+  max-width: v.$width !important;
   margin: 0 auto;
   padding: m.rem(40) 0;
-  box-sizing: border-box;
-}
-h3 {
-  font-size: v.$mainHeader;
 }
 p {
   font-size: v.$mainText;
@@ -52,11 +48,6 @@ nav {
 footer {
   color: c.$white;
   background-color: c.$black;
-  padding: m.rem(20) m.rem(60);
-  margin-top: m.rem(40);
-  display: grid;
-  gap: m.rem(80);
-  grid-template-columns: 1fr 1fr 1fr;
   div {
     p {
       line-height: 1;
@@ -67,9 +58,25 @@ footer {
     a {
       color: c.$white;
     }
-    &:last-of-type {
-      margin: 0 auto;
-      text-align: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  nav {
+    padding: 0 !important;
+    li {
+      margin: m.rem(2) 0;
+      &:nth-of-type(-n + 3) {
+        border-bottom: m.rem(1) solid c.$black;
+      }
+      &::after {
+        content: '' !important;
+      }
+    }
+  }
+  footer {
+    p {
+      text-align: center !important;
     }
   }
 }
