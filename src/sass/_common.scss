@@ -42,6 +42,16 @@ nav {
       }
     }
   }
+  button {
+    color: c.$main !important;
+    &:focus {
+      box-shadow: none !important;
+    }
+    svg {
+      width: m.rem(30);
+      height: m.rem(30);
+    }
+  }
 }
 
 // footer
@@ -61,6 +71,24 @@ footer {
   }
 }
 
+// back to top
+.toTopBtn {
+  background-color: rgba(c.$seneca, 0.6);
+  color: c.$white;
+  border-radius: v.$border-radius;
+  transition: background-color 0.3s;
+  padding: m.rem(10);
+  display: none;
+  align-items: center;
+  gap: m.rem(1);
+  position: fixed;
+  top: 70%;
+  right: m.rem(20);
+  z-index: 99;
+  &:hover {
+    background-color: c.$seneca;
+  }
+}
 @media screen and (max-width: 576px) {
   nav {
     padding: 0 !important;
