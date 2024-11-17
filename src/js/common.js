@@ -1,34 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Navbar toggler
-  const navbarToggler = document.querySelector('.navbar-toggler');
-  const navbarCollapse = document.querySelector('#navbarSupportedContent');
+// Sanity API configuration
+const projectId = 'td08n1oq';
+const version = 'v1';
+const apiUrl = `https://${projectId}.api.sanity.io/${version}/data/query/production`;
 
-  navbarToggler.setAttribute('aria-expanded', 'true');
-  navbarToggler.addEventListener('click', (e) => {
-    e.preventDefault();
-    const isExpanded = navbarCollapse.classList.contains('show');
-
-    navbarCollapse.classList.toggle('show');
-    navbarToggler.classList.toggle('collapsed');
-
-    navbarToggler.setAttribute('aria-expanded', !isExpanded);
-  });
-
-  // Scroll to top button
-  const toTopButton = document.getElementById('toTopBtn');
-
-  toTopButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
+// fetch data from Sanity
+export async function fetchSanityData(query) {
+  try {
+    const response = await fetch(`${apiUrl}?query=${encodeURIComponent(query)}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
-  });
 
-  window.addEventListener('scroll', () => {
-    const scrollHeight = document.documentElement.scrollHeight;
-    const innerHeight = window.innerHeight;
-    const scrollY = window.scrollY;
-    toTopButton.classList.toggle('d-flex', innerHeight + scrollY >= scrollHeight - 10);
+    if (!response.ok) {
+      throw new Error(`Sanity API request failed: ${response.statusText}`);
+    }
+
+    const { result } = await response.json();
+    return result;
+  } catch (error) {
+    console.error('Error fetching Sanity data:', error);
+  }
+}
+
+export async function processSanityData(data, fields = []) {
+  if (fields.length === 0) return data;
+
+  const formatData = data.map((item) => {
+    return fields.reduce((acc, field) => {
+      if (item.hasOwnProperty(field)) {
+        acc[field] = item[field];
+      }
+      return acc;
+    }, {});
   });
-});
+  return formatData;
+}

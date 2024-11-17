@@ -1,6 +1,16 @@
+import { fetchSanityData, processSanityData } from './common.js';
 document.addEventListener('DOMContentLoaded', () => {
+  // Fetch and process data
+  async function getData() {
+    const data = await fetchSanityData('*[_type == "department"]');
+    const args = ['title', 'description'];
+    const formatData = await processSanityData(data, args);
+    console.log(formatData);
+  }
+  getData();
+  
   // Swiper
-  const swiper = new Swiper('.mySwiper', {
+  new Swiper('.mySwiper', {
     slidesPerView: 1,
     spaceBetween: 15,
     navigation: {
