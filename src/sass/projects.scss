@@ -7,7 +7,6 @@
 main {
   min-height: 100vh;
 
-<<<<<<< HEAD
   p {
     color: c.$black;
     margin: 20px 0;
@@ -73,42 +72,6 @@ main {
         c.$hover-background, 
         c.$white
       );
-=======
-  >h2, >p {
-    text-align: center;
-  }
-
-  >p {
-    margin: m.rem(20) 0 !important;
-  }
-}
-
-.card {
-  &-items {
-    border-radius: v.$border-radius;
-    margin-top: m.rem(20);
-    @include m.box-shadow;
-
-    img {
-      aspect-ratio: 1/1;
-      border-radius: calc(v.$border-radius) calc(v.$border-radius) 0 0 !important;
-    }
-
-    div {
-      padding: m.rem(16);
-      border-radius: 0 0 calc(v.$border-radius) calc(v.$border-radius) !important;
-
-      p {
-        margin-bottom: m.rem(16);
-        @include m.font-break(3);
-      }
-
-      .button-link {
-        display: inline-block;
-        margin: 0 auto;
-        @include m.button-style(c.$white, c.$border, c.$black, c.$hover-background, c.$white);
-      }
->>>>>>> 0ced92829fa09ae10c6df1eab6332216dffd4a94
     }
   }
 
