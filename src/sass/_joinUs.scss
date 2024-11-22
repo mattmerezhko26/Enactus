@@ -1,0 +1,24 @@
+@use 'colors' as c;
+@use 'mixins' as m;
+
+.join-us {
+  text-align: center;
+  max-width: m.rem(400);
+  margin: m.rem(40) auto;
+  @include m.box-shadow;
+
+  p {
+    margin-bottom: m.rem(16);
+    color: c.$black;
+  }
+
+  button {
+    @include m.button-style(c.$white, c.$border, c.$black, c.$hover-background, c.$white);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .join-us {
+    margin: m.rem(20) !important;
+  }
+}

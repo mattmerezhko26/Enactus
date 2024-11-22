@@ -1,0 +1,9 @@
+@use 'mixins' as m;
+// font sizes of 32, 20, 16, and 12. 
+$mainHeader: m.rem(32);
+$subHeader: m.rem(20);
+$mainText: m.rem(16);
+$subText: m.rem(12);
+$width: m.rem(1030);
+$mainLineHeight: 1.5;
+$border-radius: m.rem(8);
