@@ -4,7 +4,7 @@
 Before starting development or maintenance, make sure the following tools are installed:  
 - **VS Code**: Used for editing and debugging code. It's recommended to install the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extensions for better workflow.  
 - **Git**: Used for version control. Familiarity with basic commands like `git clone`, `git pull`, etc., is required.  
-- **Node.js and npm**: Install [Node.js](https://nodejs.org/) LTS version 16 or above, which will also install npm for managing project dependencies.
+- **Node.js and npm**: Install [Node.js](https://nodejs.org/) ```LTS version 20 or above```, which will also install npm for managing project dependencies.
 
 ---
 
@@ -22,7 +22,7 @@ This will output the version of Node.js installed on your machine. For example, 
 v20.x.x
 ```
 
-If you have an older version of Node.js, you can download the latest **LTS** version (20 or above) from the official [Node.js website](https://nodejs.org/).
+If you have an older version of Node.js, you can download the latest ```LTS version (20 or above)``` from the official [Node.js website](https://nodejs.org/).
 
 ---
 
@@ -38,11 +38,11 @@ If you have an older version of Node.js, you can download the latest **LTS** ver
 2. **Create a new branch before making changes**  
    Always create a new branch before making any changes to avoid modifying the `main` branch. Use the following command to create and switch to a new branch:  
    ```bash
-   git checkout -b <new-branch-name>
+   git checkout -b <new-branch-name> (Date+Name)
    ```
 
 3. **Install dependencies**  
-   Make sure you're in the root project directory and run the following command to install all dependencies:  
+   Make sure you're in the ```root project directory``` and run the following command to install all dependencies:  
    ```bash
    npm install
    ```
