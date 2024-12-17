@@ -1,23 +1,15 @@
-import { fetchSanityData, processSanityData } from './common.js';
+import { fetchSanityData, processSanityData, getMemberData } from './common.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Fetch and process data
   async function fetchAndRenderMemberData() {
     try {
-      const members = await fetchMemberData();
+      const members = await getMemberData();
       renderSwiper(members);  
       initSwiper();
     } catch (error) {
       console.error('Error fetching or processing data', error);
     }
-  }
-
-  // Fetch member data from API
-  async function fetchMemberData() {
-    const query = '*[_type == "member"]';
-    const data = await fetchSanityData(query);
-    const args = ['firstName', 'lastName', 'position', 'department', 'personImg'];
-    return await processSanityData(data, args);
   }
 
   // Render the swiper with member data
