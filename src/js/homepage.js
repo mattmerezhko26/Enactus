@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Create an anchor link for the slide
   function createLink(member) {
     const link = document.createElement('a');
-    link.href = `/meetOurTeam.html#${member.department}`;
+    link.href = `meetOurTeam.html#${member.department}`;
     return link;
   }
 

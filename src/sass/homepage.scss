@@ -56,7 +56,7 @@ main {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;//for ensuring that overlay works
+      position: absolute;
       bottom: 0;
       p {
         color: c.$white;
