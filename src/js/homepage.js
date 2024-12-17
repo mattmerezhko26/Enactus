@@ -11,6 +11,45 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error fetching or processing data', error);
     }
   }
+  async function fetchOrgIntro() {
+    const query = `*[_type == "orgIntro"][0]{
+      title,
+      logo { asset -> { url } },
+      groupImg { asset -> { url } },
+      video
+    }`;
+    const data = await fetchSanityData(query);
+    return processSanityData(data);
+  }
+  function renderOrdInfo(data){
+    //select DOM elements
+    const introTitle = document.querySelector('.info h2');
+    const introLogo = document.querySelector('.enactus .logo-img');
+    const introGroupImg = document.querySelector('.enactus .group-img');
+    const introVideo = document.querySelector('.enactus .video-link');
+
+    //here we have to update title(optional)
+    if(introTitle){
+      introTitle.textContent = data.title || "Organization name";
+    }
+    //updating logo image
+    if(introLogo && data.logo && data.logo.url){
+      introLogo.src = data.logo.url;
+      introLogo.alt = 'Organization Logo';
+    }
+    //updating group image
+    if(introGroupImg && data.groupImg && data.groupImg.url){
+      introGroupImg.src = data.groupImg.url;
+      introGroupImg.alt = "Organization Group Image";
+    }
+    if(introVideo && data.video){
+      introVideo.href = data.video;
+      introVideo.textContent = "Organization video";
+
+    }
+    
+  }
+
 
   // Render the swiper with member data
   function renderSwiper(members) {  
@@ -98,5 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
   fetchAndRenderMemberData();
+  fetchAndRenderOrgInfo();
 });
