@@ -5,62 +5,65 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchAndRenderMemberData() {
     try {
       const members = await getMemberData();
-      renderSwiper(members);  
+      renderSwiper(members);
       initSwiper();
     } catch (error) {
       console.error('Error fetching or processing data', error);
     }
   }
+
   async function fetchOrgIntro() {
-    const query = `*[_type == "orgIntro"][0]{
-      title,
-      logo { asset -> { url } },
-      groupImg { asset -> { url } },
-      video
-    }`;
-    const data = await fetchSanityData(query);
-    return processSanityData(data);
+    const query = `*[_type == "orgIntro"][0]`; //query to fetch organization intro data
+    const args = ['desc', 'logo', 'groupImg', 'video']; //define the required fields
+    try {
+      // Fetch and process the data
+      const introData = await fetchSanityData(query);
+      const processedData = await processSanityData([introData], args);
+
+      console.log(processedData);
+      return processedData[0];
+    } catch (error) {
+      console.error('Error fetching organization intro:', error);
+      return {};
+    }
   }
-  function renderOrdInfo(data){
-    //select DOM elements
+
+  // Update organization info
+  function renderOrgInfo(data) {
+    // Select DOM elements
     const introTitle = document.querySelector('.info h2');
     const introLogo = document.querySelector('.enactus .logo-img');
     const introGroupImg = document.querySelector('.enactus .group-img');
     const introVideo = document.querySelector('.enactus .video-link');
 
-    //here we have to update title(optional)
-    if(introTitle){
-      introTitle.textContent = data.title || "Organization name";
-    }
-    //updating logo image
-    if(introLogo && data.logo && data.logo.url){
-      introLogo.src = data.logo.url;
-      introLogo.alt = 'Organization Logo';
-    }
-    //updating group image
-    if(introGroupImg && data.groupImg && data.groupImg.url){
-      introGroupImg.src = data.groupImg.url;
-      introGroupImg.alt = "Organization Group Image";
-    }
-    if(introVideo && data.video){
-      introVideo.href = data.video;
-      introVideo.textContent = "Organization video";
+    // Update title (optional)
+    introTitle && (introTitle.textContent = data?.title || 'Organization name');
 
+    // Update logo image
+    introLogo && (introLogo.src = data?.logo?.url || 'images/default-logo.png');
+    introLogo && (introLogo.alt = 'Organization Logo');
+
+    // Update group image
+    introGroupImg && (introGroupImg.src = data?.groupImg?.url || 'images/default-group.png');
+    introGroupImg && (introGroupImg.alt = 'Organization Group Image');
+
+    // Update video link
+    if (introVideo && data?.video) {
+      introVideo.href = data.video;
+      introVideo.textContent = 'Organization video';
     }
-    
   }
 
-
   // Render the swiper with member data
-  function renderSwiper(members) {  
-    let container = document.querySelector('.mySwiper .swiper-wrapper');
+  function renderSwiper(members) {
+    const container = document.querySelector('.mySwiper .swiper-wrapper');
     if (!container) {
       console.error('Swiper container not found');
       return;
     }
-    members.forEach((member) => {  
+    members.forEach((member) => {
       const slide = createSlide(member);
-      container.appendChild(slide);  
+      container.appendChild(slide);
     });
   }
 
@@ -68,9 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function createSlide(member) {
     const slide = document.createElement('div');
     slide.classList.add('swiper-slide');
+
     const link = createLink(member);
-    const image = createImage(member.personImg, member.firstName, member.lastName);
-    const textContainer = createTextContainer(member.firstName, member.lastName, member.position);
+    const image = createImage(member?.personImg, member?.firstName, member?.lastName);
+    const textContainer = createTextContainer(member?.firstName, member?.lastName, member?.position);
+
     link.appendChild(image);
     link.appendChild(textContainer);
     slide.appendChild(link);
@@ -81,15 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Create an anchor link for the slide
   function createLink(member) {
     const link = document.createElement('a');
-    link.href = `meetOurTeam.html#${member.department}`;
+    link.href = `meetOurTeam.html#${member?.department || ''}`;
     return link;
   }
 
   // Create an image element
   function createImage(src, firstName, lastName) {
     const img = document.createElement('img');
-    img.src = src;
-    img.alt = `${firstName} ${lastName} image`;
+    img.src = src || 'images/default-image.png';
+    img.alt = `${firstName || 'Unknown'} ${lastName || 'Member'} image`;
     return img;
   }
 
@@ -98,10 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const textContainer = document.createElement('div');
 
     const name = document.createElement('p');
-    name.textContent = `${firstName} ${lastName}`;
+    name.textContent = `${firstName || 'Unknown'} ${lastName || 'Member'}`;
 
     const positionElement = document.createElement('p');
-    positionElement.textContent = position;
+    positionElement.textContent = position || 'Position not available';
 
     textContainer.appendChild(name);
     textContainer.appendChild(positionElement);
@@ -124,20 +129,23 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       // Responsive breakpoints to adjust slidesPerView
       breakpoints: {
-        576: {
-          slidesPerView: 2,
-        },
-        768: {
-          slidesPerView: 3,
-        },
-        992: {
-          slidesPerView: 4,
-        },
+        576: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        992: { slidesPerView: 4 },
       },
     });
   }
 
-
+  // Call functions
   fetchAndRenderMemberData();
-  fetchAndRenderOrgInfo();
+  fetchOrgIntro().then((data) => {
+    const descElement = document.querySelector('.org-desc');
+    if (descElement && data?.desc) {
+      descElement.textContent = data.desc;
+    }
+    const logoElement = document.querySelector('.logo-img');
+    if (logoElement && data?.logo?.asset?.url) {
+      logoElement.src = data.logo.asset.url;
+    }
+  });
 });

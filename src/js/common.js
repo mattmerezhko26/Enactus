@@ -24,7 +24,7 @@ export async function fetchSanityData(query) {
 }
 
 // Process and format fetched data based on specific fields
-export async function processSanityData(data, fields = []) {
+export function processSanityData(data, fields = []) {
   if (fields.length === 0) return data;
 
   return data.map((item) => {
