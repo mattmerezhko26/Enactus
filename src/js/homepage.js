@@ -1,4 +1,4 @@
-import { fetchSanityData, processSanityData, getMemberData } from './common.js';
+import { fetchSanityData, processSanityData, getMemberData, convertSanityAssesRefToUrl } from './common.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Fetch and process data
@@ -30,28 +30,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Update organization info
   function renderOrgInfo(data) {
-    // Select DOM elements
-    const introTitle = document.querySelector('.info h2');
     const introLogo = document.querySelector('.enactus .logo-img');
     const introGroupImg = document.querySelector('.enactus .group-img');
-    const introVideo = document.querySelector('.enactus .video-link');
 
-    // Update title (optional)
-    introTitle && (introTitle.textContent = data?.title || 'Organization name');
+    // Assuming projectId and dataset are available from your environment or the data
+    const projectId = 'td08n1oq';
+    const dataset = 'production';
 
     // Update logo image
-    introLogo && (introLogo.src = data?.logo?.url || 'images/default-logo.png');
-    introLogo && (introLogo.alt = 'Organization Logo');
+    introLogo &&
+      (introLogo.src =
+        convertSanityAssesRefToUrl(data?.logo?.asset?._ref, projectId, dataset) || 'images/default-logo.png');
 
     // Update group image
-    introGroupImg && (introGroupImg.src = data?.groupImg?.url || 'images/default-group.png');
-    introGroupImg && (introGroupImg.alt = 'Organization Group Image');
-
-    // Update video link
-    if (introVideo && data?.video) {
-      introVideo.href = data.video;
-      introVideo.textContent = 'Organization video';
-    }
+    introGroupImg &&
+      (introGroupImg.src =
+        convertSanityAssesRefToUrl(data?.groupImg?.asset?._ref, projectId, dataset) || 'images/default-group.png');
   }
 
   // Render the swiper with member data
@@ -91,9 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Create an image element
-  function createImage(src, firstName, lastName) {
+  function createImage(image, firstName, lastName) {
     const img = document.createElement('img');
-    img.src = src || 'images/default-image.png';
+    const projectId = 'td08n1oq';
+    const dataset = 'production';
+    img.src = convertSanityAssesRefToUrl(image?.asset?._ref, projectId, dataset) || 'images/default-image.png';
     img.alt = `${firstName || 'Unknown'} ${lastName || 'Member'} image`;
     return img;
   }
@@ -139,13 +135,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Call functions
   fetchAndRenderMemberData();
   fetchOrgIntro().then((data) => {
+    renderOrgInfo(data);  // Call renderOrgInfo after data is fetched
     const descElement = document.querySelector('.org-desc');
     if (descElement && data?.desc) {
       descElement.textContent = data.desc;
     }
     const logoElement = document.querySelector('.logo-img');
-    if (logoElement && data?.logo?.asset?.url) {
-      logoElement.src = data.logo.asset.url;
+    if (logoElement && data?.logo?.asset?._ref) {
+      logoElement.src =
+        convertSanityAssesRefToUrl(data?.logo?.asset?._ref, projectId, dataset) || 'images/default-logo.png';
     }
   });
 });

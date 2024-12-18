@@ -22,7 +22,10 @@ export async function fetchSanityData(query) {
     return [];
   }
 }
-
+export function convertSanityAssesRefToUrl(assetRef, projectId, dataset) {
+  const [type, assetId, dimensions, format] = assetRef.split('-');
+  return `https://cdn.sanity.io/images/${projectId}/${dataset}/${assetId}-${dimensions}.${format}`;
+}
 // Process and format fetched data based on specific fields
 export function processSanityData(data, fields = []) {
   if (fields.length === 0) return data;
