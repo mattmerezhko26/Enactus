@@ -59,11 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
       addClasses(iframe, ['col-md-5', 'p-0']);
       iframe.src = video;
       container.appendChild(iframe);
-    } else {
+    } else if (img) {
       const image = document.createElement('img');
       addClasses(image, ['col-md-5', 'p-0']);
-      image.src = convertSanityAssetRefToUrl(img?.asset?._ref);
+      image.src = convertSanityAssetRefToUrl(img?.asset?._ref) || '';
       container.appendChild(image);
+    } else {
+      console.log('No video or image found');
     }
   }
 
