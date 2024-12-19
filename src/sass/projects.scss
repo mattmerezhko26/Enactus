@@ -7,46 +7,40 @@
 main {
   min-height: 100vh;
 
-  >h2, >p {
+  > h2,
+  > p {
     text-align: center;
   }
 
-  >p {
+  > p {
     margin: m.rem(20) 0 !important;
   }
 }
 
 .card {
-  &-items {
-    border-radius: v.$border-radius;
+  &-item {
+    border-bottom: 1px solid c.$border;
     margin-top: m.rem(20);
-    @include m.box-shadow;
-
-    img {
-      aspect-ratio: 1/1;
-      border-radius: calc(v.$border-radius) calc(v.$border-radius) 0 0 !important;
+    padding: 0 0 m.rem(20) 0 !important;
+    &:nth-child(even) {
+      flex-direction: row-reverse;
     }
-
-    div {
-      padding: m.rem(16);
-      border-radius: 0 0 calc(v.$border-radius) calc(v.$border-radius) !important;
-
-      p {
-        margin-bottom: m.rem(16);
-        @include m.font-break(3);
-      }
-
-      .button-link {
-        display: inline-block;
-        margin: 0 auto;
-        @include m.button-style(c.$white, c.$border, c.$black, c.$hover-background, c.$white);
-      }
+    img {
+      aspect-ratio: 16/9;
+    }
+    h3 {
+      font-size: v.$subHeader;
     }
   }
 }
 
-@media screen and (max-width: 576px) {
-  .card-box > div {
-    padding: m.rem(20) !important;
+@media screen and (max-width: 800px) {
+  .card {
+    &-item {
+      border: unset;
+    }
+    &-title {
+      padding-top: m.rem(10);
+    }
   }
 }

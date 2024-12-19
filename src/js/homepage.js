@@ -1,12 +1,11 @@
-import { fetchSanityData, processSanityData, getMemberData, convertSanityAssetRefToUrl, addClasses } from './common.js';
+import { fetchSanityData, getMemberData, convertSanityAssetRefToUrl, addClasses } from './common.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   async function getAndRenderIndex() {
     try {
       const intro = await fetchSanityData('*[_type == "orgIntro"]');
-      const processedIntro = await processSanityData(intro);
-      renderEnactusIntro(processedIntro[0]);
-      renderAboutUs(processedIntro[1]);
+      renderEnactusIntro(intro[0]);
+      renderAboutUs(intro[1]);
       const members = await getMemberData();
       renderSwiper(members);
       initSwiper();
@@ -63,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const image = document.createElement('img');
       addClasses(image, ['col-md-5', 'p-0']);
       image.src = convertSanityAssetRefToUrl(img?.asset?._ref) || '';
+      image.alt = 'group image';
       container.appendChild(image);
     } else {
       console.log('No video or image found');

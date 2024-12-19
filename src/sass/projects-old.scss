@@ -1,0 +1,52 @@
+@use './colors' as c;
+@use './mixins' as m;
+@use 'variables' as v;
+@use './common.scss';
+@use './joinUs';
+
+main {
+  min-height: 100vh;
+
+  >h2, >p {
+    text-align: center;
+  }
+
+  >p {
+    margin: m.rem(20) 0 !important;
+  }
+}
+
+.card {
+  &-items {
+    border-radius: v.$border-radius;
+    margin-top: m.rem(20);
+    @include m.box-shadow;
+
+    img {
+      aspect-ratio: 1/1;
+      border-radius: calc(v.$border-radius) calc(v.$border-radius) 0 0 !important;
+    }
+
+    div {
+      padding: m.rem(16);
+      border-radius: 0 0 calc(v.$border-radius) calc(v.$border-radius) !important;
+
+      p {
+        margin-bottom: m.rem(16);
+        @include m.font-break(3);
+      }
+
+      .button-link {
+        display: inline-block;
+        margin: 0 auto;
+        @include m.button-style(c.$white, c.$border, c.$black, c.$hover-background, c.$white);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .card-box > div {
+    padding: m.rem(20) !important;
+  }
+}
