@@ -1,7 +1,7 @@
 import { fetchSanityData, processSanityData, getMemberData, convertSanityAssetRefToUrl, addClasses } from './common.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  async function fetchAndRenderMemberData() {
+  async function getAndRenderIndex() {
     try {
       const intro = await fetchSanityData('*[_type == "orgIntro"]');
       const processedIntro = await processSanityData(intro);
@@ -157,5 +157,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  fetchAndRenderMemberData();
+  getAndRenderIndex();
 });
