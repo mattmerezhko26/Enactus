@@ -49,7 +49,7 @@ export async function getMemberData() {
 
   const mappedMembers = memberData.map((member) => mapMemberData(member, positionLookup, departmentLookup));
 
-  const args = ['firstName', 'lastName', 'position', 'department', 'personImg'];
+  const args = ['firstName', 'lastName', 'position', 'department', 'personImg', 'personalURL'];
   return await processSanityData(mappedMembers, args);
 }
 
