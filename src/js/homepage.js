@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Determine whether to render an img tag or an iframe for a YouTube video, video is preferred
   function renderVideoOrImg(container, video, img) {
-    console.log(img);
     if (video) {
       const iframe = document.createElement('iframe');
       addClasses(iframe, ['col-md-5', 'p-0']);
@@ -129,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Swiper instance
   function initSwiper() {
     new Swiper('.mySwiper', {
+      lazy: true,
       slidesPerView: 1, // Default number of slides visible
       spaceBetween: 15,
       navigation: {
@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         delay: 2000,
         disableOnInteraction: false,
       },
+      loop: true,
       // Responsive breakpoints to adjust slidesPerView
       breakpoints: {
         576: {
