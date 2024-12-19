@@ -1,9 +1,12 @@
-import { fetchSanityData, processSanityData, getMemberData, convertSanityAssesRefToUrl } from './common.js';
+import { fetchSanityData, processSanityData, getMemberData, convertSanityAssetRefToUrl, addClasses } from './common.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Fetch and process data
   async function fetchAndRenderMemberData() {
     try {
+      const intro = await fetchSanityData('*[_type == "orgIntro"]');
+      const processedIntro = await processSanityData(intro);
+      renderEnactusIntro(processedIntro[0]);
+      renderAboutUs(processedIntro[1]);
       const members = await getMemberData();
       renderSwiper(members);
       initSwiper();
@@ -12,45 +15,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  async function fetchOrgIntro() {
-    const query = `*[_type == "orgIntro"][0]`; //query to fetch organization intro data
-    const args = ['desc', 'logo', 'groupImg', 'video']; //define the required fields
-    try {
-      // Fetch and process the data
-      const introData = await fetchSanityData(query);
-      const processedData = await processSanityData([introData], args);
+  function renderEnactusIntro(intro) {
+    const { video, desc, groupImg } = intro;
+    const enactusContainer = document.querySelector('.enactus');
 
-      console.log(processedData);
-      return processedData[0];
-    } catch (error) {
-      console.error('Error fetching organization intro:', error);
-      return {};
-    }
+    renderVideoOrImg(enactusContainer, video, groupImg);
+    const span = document.createElement('span');
+    addClasses(span, ['col-md-6', 'p-0']);
+    span.textContent = desc;
+    enactusContainer.appendChild(span);
   }
 
-  // Update organization info
-  function renderOrgInfo(data) {
-    const introLogo = document.querySelector('.enactus .logo-img');
-    const introGroupImg = document.querySelector('.enactus .group-img');
+  function renderAboutUs(intro) {
+    const { desc, groupImg, video } = intro;
+    const aboutUscontainer = document.querySelector('.about');
+    const div = document.createElement('div');
+    addClasses(div, ['row', 'justify-content-between', 'm-0']);
+    const p = document.createElement('p');
+    addClasses(p, ['p-0']);
+    const span = document.createElement('span');
+    addClasses(span, ['col-md-6', 'p-0']);
+    const secondParaphraseEnd = desc.indexOf('.', desc.indexOf('.') + 1);
 
-    // Assuming projectId and dataset are available from your environment or the data
-    const projectId = 'td08n1oq';
-    const dataset = 'production';
+    if (secondParaphraseEnd !== -1) {
+      const firstPart = desc.slice(0, secondParaphraseEnd + 1).trim();
+      const secondPart = desc.slice(secondParaphraseEnd + 2).trim();
 
-    // Update logo image
-    introLogo &&
-      (introLogo.src =
-        convertSanityAssesRefToUrl(data?.logo?.asset?._ref, projectId, dataset) || 'images/default-logo.png');
+      p.textContent = firstPart;
+      span.textContent = secondPart;
+      aboutUscontainer.appendChild(p);
+      aboutUscontainer.appendChild(div);
+      div.appendChild(span);
+    } else {
+      console.log("The string doesn't have a second '.' character.");
+    }
+    renderVideoOrImg(div, video, groupImg);
+  }
 
-    // Update group image
-    introGroupImg &&
-      (introGroupImg.src =
-        convertSanityAssesRefToUrl(data?.groupImg?.asset?._ref, projectId, dataset) || 'images/default-group.png');
+  // Determine whether to render an img tag or an iframe for a YouTube video, video is preferred
+  function renderVideoOrImg(container, video, img) {
+    console.log(img);
+    if (video) {
+      const iframe = document.createElement('iframe');
+      addClasses(iframe, ['col-md-5', 'p-0']);
+      iframe.src = video;
+      container.appendChild(iframe);
+    } else {
+      const image = document.createElement('img');
+      addClasses(image, ['col-md-5', 'p-0']);
+      image.src = convertSanityAssetRefToUrl(img?.asset?._ref);
+      container.appendChild(image);
+    }
   }
 
   // Render the swiper with member data
   function renderSwiper(members) {
-    const container = document.querySelector('.mySwiper .swiper-wrapper');
+    let container = document.querySelector('.mySwiper .swiper-wrapper');
     if (!container) {
       console.error('Swiper container not found');
       return;
@@ -65,11 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function createSlide(member) {
     const slide = document.createElement('div');
     slide.classList.add('swiper-slide');
-
     const link = createLink(member);
-    const image = createImage(member?.personImg, member?.firstName, member?.lastName);
-    const textContainer = createTextContainer(member?.firstName, member?.lastName, member?.position);
-
+    const image = createImage(member.personImg, member.firstName, member.lastName);
+    const textContainer = createTextContainer(member.firstName, member.lastName, member.position);
     link.appendChild(image);
     link.appendChild(textContainer);
     slide.appendChild(link);
@@ -80,17 +98,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Create an anchor link for the slide
   function createLink(member) {
     const link = document.createElement('a');
-    link.href = `meetOurTeam.html#${member?.department || ''}`;
+    link.href = `meetOurTeam.html#${member.department}`;
     return link;
   }
 
   // Create an image element
-  function createImage(image, firstName, lastName) {
+  function createImage(src, firstName, lastName) {
     const img = document.createElement('img');
-    const projectId = 'td08n1oq';
-    const dataset = 'production';
-    img.src = convertSanityAssesRefToUrl(image?.asset?._ref, projectId, dataset) || 'images/default-image.png';
-    img.alt = `${firstName || 'Unknown'} ${lastName || 'Member'} image`;
+    img.src = src;
+    img.alt = `${firstName} ${lastName} image`;
     return img;
   }
 
@@ -99,10 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const textContainer = document.createElement('div');
 
     const name = document.createElement('p');
-    name.textContent = `${firstName || 'Unknown'} ${lastName || 'Member'}`;
+    name.textContent = `${firstName} ${lastName}`;
 
     const positionElement = document.createElement('p');
-    positionElement.textContent = position || 'Position not available';
+    positionElement.textContent = position;
 
     textContainer.appendChild(name);
     textContainer.appendChild(positionElement);
@@ -125,25 +141,18 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       // Responsive breakpoints to adjust slidesPerView
       breakpoints: {
-        576: { slidesPerView: 2 },
-        768: { slidesPerView: 3 },
-        992: { slidesPerView: 4 },
+        576: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        992: {
+          slidesPerView: 4,
+        },
       },
     });
   }
 
-  // Call functions
   fetchAndRenderMemberData();
-  fetchOrgIntro().then((data) => {
-    renderOrgInfo(data);  // Call renderOrgInfo after data is fetched
-    const descElement = document.querySelector('.org-desc');
-    if (descElement && data?.desc) {
-      descElement.textContent = data.desc;
-    }
-    const logoElement = document.querySelector('.logo-img');
-    if (logoElement && data?.logo?.asset?._ref) {
-      logoElement.src =
-        convertSanityAssesRefToUrl(data?.logo?.asset?._ref, projectId, dataset) || 'images/default-logo.png';
-    }
-  });
 });

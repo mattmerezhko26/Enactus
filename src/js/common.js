@@ -22,12 +22,9 @@ export async function fetchSanityData(query) {
     return [];
   }
 }
-export function convertSanityAssesRefToUrl(assetRef, projectId, dataset) {
-  const [type, assetId, dimensions, format] = assetRef.split('-');
-  return `https://cdn.sanity.io/images/${projectId}/${dataset}/${assetId}-${dimensions}.${format}`;
-}
+
 // Process and format fetched data based on specific fields
-export function processSanityData(data, fields = []) {
+export async function processSanityData(data, fields = []) {
   if (fields.length === 0) return data;
 
   return data.map((item) => {
@@ -69,9 +66,7 @@ function mapMemberData(member, positionLookup, departmentLookup) {
   const position = positionLookup[member.position._ref];
   const department = departmentLookup[member.department._ref];
   const assetRef = member?.personImg?.asset._ref;
-  const personImg = assetRef
-    ? convertSanityAssetRefToUrl(assetRef, projectId, dataset)
-    : null;
+  const personImg = assetRef ? convertSanityAssetRefToUrl(assetRef, projectId, dataset) : '';
 
   return {
     ...member,
@@ -82,7 +77,11 @@ function mapMemberData(member, positionLookup, departmentLookup) {
 }
 
 // Convert Sanity asset reference to image URL
-function convertSanityAssetRefToUrl(assetRef, projectId, dataset) {
+export function convertSanityAssetRefToUrl(assetRef, projectId='td08n1oq', dataset='production') {
   const [type, assetId, dimensions, format] = assetRef.split('-');
   return `https://cdn.sanity.io/images/${projectId}/${dataset}/${assetId}-${dimensions}.${format}`;
+}
+
+export function addClasses(element, classes) {
+  classes.forEach((cls) => element.classList.add(cls));
 }
