@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     departments.forEach(({ departmentName, members }) => {
       const header = document.createElement('h2');
       header.textContent = departmentName;
+      header.id = departmentName.toLowerCase().replace(/\s+/g, '-'); // Create an ID for internal linking
 
       const departmentBox = document.createElement('div');
       addClasses(departmentBox, ['department-box', 'card-group', 'row']);

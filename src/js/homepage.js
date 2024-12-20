@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Create an anchor link for the slide
   function createLink(member) {
     const link = document.createElement('a');
-    link.href = `meetOurTeam.html#${member.department}`;
+    link.href = `meetOurTeam.html#${member.department.toLowerCase().replace(/\s+/g, '-')}`;
     return link;
   }
 
