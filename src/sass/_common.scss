@@ -71,6 +71,10 @@ footer {
     }
     a {
       color: c.$white;
+      text-decoration: underline;
+      &:hover {
+        color: c.$seneca;
+      }
     }
   }
 }

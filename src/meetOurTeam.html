@@ -6,23 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Enactus Seneca</title>
   <!-- SEO start -->
-  <meta name="description"
-    content="Enactus Seneca empowers students at Seneca Polytechnic to use entrepreneurial action for solving social, economic, and environmental challenges. Through innovative projects, they create sustainable impact and inspire positive change." />
-  <link rel="canonical" href="" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Enactus Seneca" />
-  <meta property="og:description"
-    content="Enactus Seneca empowers students at Seneca Polytechnic to use entrepreneurial action for solving social, economic, and environmental challenges. Through innovative projects, they create sustainable impact and inspire positive change." />
-  <meta property="og:url" content="" />
-  <meta property="og:site_name" content="Enactus Seneca" />
-  <meta property="article:publisher" content="https://www.linkedin.com/company/enactus-senecapolytechnic/" />
-  <meta property="article:modified_time" content="" />
-  <meta property="og:image" content="" />
-  <meta property="og:image:width" content="" />
-  <meta property="og:image:height" content="" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@EnactusSeneca" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Enactus Seneca - Meet Our Team",
+      "description": "Get to know the passionate and innovative students who drive Enactus Seneca's mission of creating positive social and economic change.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Enactus Seneca"
+      },
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Enactus Seneca",
+        "members": {
+          "@type": "OrganizationRole",
+          "roleName": "Team Members"
+        }
+      }
+    }
+  </script>
+  <script type="module">
+    import { injectJsonLd } from './js/jsonld.js';
+    injectJsonLd('team');
+  </script>
   <!-- SEO end -->
   <link rel="stylesheet" href="dist/reset.css" />
   <link rel="stylesheet" href="dist/meetOurTeam.css" />
