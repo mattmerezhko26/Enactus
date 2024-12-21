@@ -1,41 +1,71 @@
 import { fetchSanityData, processSanityData, convertSanityAssetRefToUrl, addClasses } from './common.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  async function getAndRenderProjects() {
+  async function fetchAndRenderProjectData() {
     try {
       const projects = await fetchSanityData('*[_type == "project"]');
-      renderProject(projects);
-      console.log(projects);
+      if (!Array.isArray(projects) || projects.length === 0) {
+        throw new Error('Invalid or empty project data received');
+      }
+
+      renderProjects(projects);
     } catch (error) {
-      console.error('Error fetching or processing data', error);
+      console.error('Error in project data processing:', {
+        message: error.message,
+      });
     }
   }
 
-  function renderProject(projects) {
+  function renderProjects(projects) {
     const projectContainer = document.querySelector('.card-box');
+    if (!projectContainer) return;
+
+    const fragment = document.createDocumentFragment();
     projects.forEach((project) => {
-      const { projectName, desc, projectImg } = project;
-      const cardItem = document.createElement('div');
-      addClasses(cardItem, ['card-item', 'row', 'justify-content-between', 'mb-3']);
-      const img = document.createElement('img');
-      addClasses(img, ['col-md-6']);
-      const imgUrl = projectImg ? convertSanityAssetRefToUrl(projectImg?.asset?._ref) : '';
-      img.src = imgUrl;
-      img.alt = projectName;
-      const div = document.createElement('div');
-      addClasses(div, ['col-md-6']);
-      const h3 = document.createElement('h3');
-      h3.textContent = projectName;
-      addClasses(h3, ['card-title']);
-      const p = document.createElement('p');
-      p.textContent = desc;
-      addClasses(p, ['card-text']);
-      div.appendChild(h3);
-      div.appendChild(p);
-      cardItem.appendChild(img);
-      cardItem.appendChild(div);
-      projectContainer.appendChild(cardItem);
+      fragment.appendChild(createProjectCard(project));
     });
+    projectContainer.appendChild(fragment);
   }
-  getAndRenderProjects();
+
+  function createProjectCard(project) {
+    const { projectName, desc, projectImg } = project;
+    const cardItem = document.createElement('div');
+    addClasses(cardItem, ['card-item', 'row', 'justify-content-between', 'mb-3']);
+
+    const img = createProjectImage(projectName, projectImg);
+    const textContainer = createProjectTextContainer(projectName, desc);
+
+    cardItem.append(img, textContainer);
+    return cardItem;
+  }
+
+  function createProjectImage(projectName, projectImg) {
+    const img = document.createElement('img');
+    addClasses(img, ['col-md-6']);
+    const imgUrl = projectImg ? convertSanityAssetRefToUrl(projectImg?.asset?._ref) : '';
+    Object.assign(img, {
+      src: imgUrl,
+      alt: `${projectName} project image`,
+      loading: 'lazy',
+    });
+    return img;
+  }
+
+  function createProjectTextContainer(projectName, desc) {
+    const container = document.createElement('div');
+    addClasses(container, ['col-md-6']);
+
+    const title = document.createElement('h3');
+    title.textContent = projectName;
+    addClasses(title, ['card-title']);
+
+    const description = document.createElement('p');
+    description.textContent = desc;
+    addClasses(description, ['card-text']);
+
+    container.append(title, description);
+    return container;
+  }
+
+  fetchAndRenderProjectData();
 });

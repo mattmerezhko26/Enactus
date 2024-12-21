@@ -26,6 +26,7 @@ main {
       flex-direction: row-reverse;
     }
     img {
+      max-height: m.rem(300);
       aspect-ratio: 16/9;
     }
     h3 {

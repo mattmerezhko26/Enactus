@@ -37,20 +37,52 @@ export async function processSanityData(data, fields = []) {
   });
 }
 
-// Fetch and map member data from Sanity API
+// Fetch and map member data from Sanity API with session storage caching
 export async function getMemberData() {
-  const memberData = await fetchSanityData('*[_type == "member"]');
-  const departmentData = await fetchSanityData('*[_type == "department"]');
-  const positionData = await fetchSanityData('*[_type == "position"]');
+  const CACHE_KEY = 'enactus_member';
+  const CACHE_EXPIRY_KEY = 'enactus_member_expiry';
+  const CACHE_DURATION = 24 * 60 * 60 * 1000;
 
-  // Create lookup tables for position and department data
-  const departmentLookup = createLookup(departmentData, '_id');
-  const positionLookup = createLookup(positionData, '_id');
+  // Check if cached data exists and is still valid
+  const cachedData = sessionStorage.getItem(CACHE_KEY);
+  const cachedExpiry = sessionStorage.getItem(CACHE_EXPIRY_KEY);
 
-  const mappedMembers = memberData.map((member) => mapMemberData(member, positionLookup, departmentLookup));
+  if (cachedData && cachedExpiry && Date.now() < parseInt(cachedExpiry, 10)) {
+    try {
+      return JSON.parse(cachedData);
+    } catch (error) {
+      console.error('Error parsing cached member data:', error);
+      // Fall back to fetching fresh data if parsing fails
+    }
+  }
 
-  const args = ['firstName', 'lastName', 'position', 'department', 'personImg', 'personalURL'];
-  return await processSanityData(mappedMembers, args);
+  try {
+    const memberData = await fetchSanityData('*[_type == "member"]');
+    const departmentData = await fetchSanityData('*[_type == "department"]');
+    const positionData = await fetchSanityData('*[_type == "position"]');
+
+    // Create lookup tables for position and department data
+    const departmentLookup = createLookup(departmentData, '_id');
+    const positionLookup = createLookup(positionData, '_id');
+
+    const mappedMembers = memberData.map((member) => mapMemberData(member, positionLookup, departmentLookup));
+
+    const args = ['firstName', 'lastName', 'position', 'department', 'personImg', 'personalURL'];
+    const processedMembers = await processSanityData(mappedMembers, args);
+
+    // Cache the processed data
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(processedMembers));
+      sessionStorage.setItem(CACHE_EXPIRY_KEY, (Date.now() + CACHE_DURATION).toString());
+    } catch (storageError) {
+      console.warn('Session storage is full or disabled:', storageError);
+    }
+
+    return processedMembers;
+  } catch (error) {
+    console.error('Error fetching member data:', error);
+    return [];
+  }
 }
 
 // Create a lookup table from data based on a given key
