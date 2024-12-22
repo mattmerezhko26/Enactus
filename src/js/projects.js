@@ -1,4 +1,4 @@
-import { fetchSanityData, processSanityData, convertSanityAssetRefToUrl, addClasses } from './common.js';
+import { fetchSanityData, convertSanityAssetRefToUrl, addClasses } from './common.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   async function fetchAndRenderProjectData() {
