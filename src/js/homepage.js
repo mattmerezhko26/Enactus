@@ -70,21 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Render the swiper with member data
-  function renderSwiper(members){
-    //defining the position hierarchy
-    const positionOrder = {"President":1,"Vice President":2,"Executive":3,"Assosiate":4,"General Memeber":5};
-    //Sorting based on position priority 
-    members.sort((a, b) => {
-      const rankA = positionOrder[a.position] || Infinity;
-      const rankB = positionOrder[b.position] || Infinity;
-      return rankA - rankB;
-    });
-    const container = document.querySelector('.mySwiper .swiper-wrapper');
-    if(!container){
-      console.log("No container found");
+  function renderSwiper(members) {
+    let container = document.querySelector('.mySwiper .swiper-wrapper');
+    if (!container) {
+      console.error('Swiper container not found');
       return;
     }
-    container.innerHTML = '';
     members.forEach((member) => {
       const slide = createSlide(member);
       container.appendChild(slide);
@@ -137,39 +128,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initialize Swiper instance
-  let swiperInstance;
-
-function initSwiper() {
-  if (swiperInstance) {
-    swiperInstance.destroy(true, true);
+  function initSwiper() {
+    new Swiper('.mySwiper', {
+      lazy: true,
+      slidesPerView: 1, // Default number of slides visible
+      spaceBetween: 15,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+      },
+      loop: true,
+      // Responsive breakpoints to adjust slidesPerView
+      breakpoints: {
+        576: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        992: {
+          slidesPerView: 4,
+        },
+      },
+    });
   }
-  swiperInstance = new Swiper('.mySwiper', {
-    lazy: true,
-    slidesPerView: 1,
-    spaceBetween: 15,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    autoplay: {
-      delay: 2000,
-      disableOnInteraction: false,
-    },
-    loop: true,
-    breakpoints: {
-      576: {
-        slidesPerView: 2,
-      },
-      768: {
-        slidesPerView: 3,
-      },
-      992: {
-        slidesPerView: 4,
-      },
-    },
-  });
-}
 
-// Call initSwiper after rendering slides
-getAndRenderIndex().then(initSwiper);
+  getAndRenderIndex();
 });

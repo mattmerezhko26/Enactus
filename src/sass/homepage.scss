@@ -44,7 +44,7 @@ main {
     max-height: m.rem(300);
     aspect-ratio: 1 / 1;
     img {
-      width: 100%;
+      max-width: 100%;
       aspect-ratio: 1 / 1;
     }
     div {
@@ -78,6 +78,9 @@ main {
       &::after {
         content: '' !important;
       }
+      &:hover {
+        background-color: c.$seneca;
+      }
       svg {
         fill: c.$white;
       }
@@ -94,6 +97,9 @@ main {
 }
 
 @media screen and (max-width: 576px) {
+  .swiper {
+    max-width: m.rem(300);
+  }
   .about {
     > div {
       display: block !important;

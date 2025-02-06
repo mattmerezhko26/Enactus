@@ -7,18 +7,18 @@ const apiUrl = `https://${projectId}.api.sanity.io/${version}/data/query/${datas
 // Fetch data from Sanity API
 export async function fetchSanityData(query) {
   try {
-    const response = await fetch(`${apiUrl}?query=${encodeURIComponent(query)}`, {
+    const res = await fetch(`${apiUrl}?query=${encodeURIComponent(query)}`, {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (!response.ok) {
-      throw new Error(`Sanity API request failed: ${response.statusText}`);
+    if (!res.ok) {
+      throw new Error(`Sanity API request failed: ${res.statusText}`);
     }
 
-    const { result } = await response.json();
+    const { result } = await res.json();
     return result;
   } catch (err) {
-    console.err('Error fetching Sanity data:', err);
+    console.error('Error fetching Sanity data:', err);
     return [];
   }
 }
@@ -50,8 +50,8 @@ export async function getMemberData() {
   if (cachedData && cachedExpiry && Date.now() < parseInt(cachedExpiry, 10)) {
     try {
       return JSON.parse(cachedData);
-    } catch (error) {
-      console.error('Error parsing cached member data:', error);
+    } catch (err) {
+      console.error('Error parsing cached member data:', err);
       // Fall back to fetching fresh data if parsing fails
     }
   }
@@ -70,6 +70,27 @@ export async function getMemberData() {
     const args = ['firstName', 'lastName', 'position', 'department', 'personImg', 'personalURL'];
     const processedMembers = await processSanityData(mappedMembers, args);
 
+    //defining the position hierarchy
+    const positionOrder = {
+      President: 1,
+      'Vice President': 2,
+      Executive: 3,
+      Associate: 4,
+      Director: 5,
+      'General Memeber': 6,
+    };
+
+    //Sorting based on position priority
+    processedMembers.sort((a, b) => {
+      const rankA = positionOrder[a.position];
+      const rankB = positionOrder[b.position];
+      if (rankA !== rankB) {
+        return rankA - rankB;
+      }
+
+      return a.position.localeCompare(b.position);
+    });
+
     // Cache the processed data
     try {
       sessionStorage.setItem(CACHE_KEY, JSON.stringify(processedMembers));
@@ -79,8 +100,8 @@ export async function getMemberData() {
     }
 
     return processedMembers;
-  } catch (error) {
-    console.error('Error fetching member data:', error);
+  } catch (err) {
+    console.error('Error fetching member data:', err);
     return [];
   }
 }
@@ -109,9 +130,13 @@ function mapMemberData(member, positionLookup, departmentLookup) {
 }
 
 // Convert Sanity asset reference to image URL
-export function convertSanityAssetRefToUrl(assetRef, projectId='td08n1oq', dataset='production') {
+export function convertSanityAssetRefToUrl(assetRef, projectId = 'td08n1oq', dataset = 'production') {
   const [type, assetId, dimensions, format] = assetRef.split('-');
-  return `https://cdn.sanity.io/images/${projectId}/${dataset}/${assetId}-${dimensions}.${format}`;
+  // use the following query parameters to modify the image size: '?w=800&h=800&fit=crop&auto=format'
+  // w → width, h → height
+  // fit=crop → cut off any excess image to fit the specified dimensions
+  // auto=format → automatically determine the best image format (e.g., WebP)
+  return `https://cdn.sanity.io/images/${projectId}/${dataset}/${assetId}-${dimensions}.${format}?w=800&h=800&fit=crop&auto=format`;
 }
 
 export function addClasses(element, classes) {
