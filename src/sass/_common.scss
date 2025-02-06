@@ -33,7 +33,7 @@ nav {
   }
   ol {
     li {
-      &:nth-child(-n + 3)::after {
+      &:nth-child(-n + 4)::after {
         content: '|';
         margin: 0 m.rem(10);
       }
@@ -102,7 +102,7 @@ footer {
     padding: 0 !important;
     li {
       margin: m.rem(2) 0;
-      &:nth-of-type(-n + 3) {
+      &:nth-of-type(-n + 4) {
         border-bottom: m.rem(1) solid c.$black;
       }
       &::after {
