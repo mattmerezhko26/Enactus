@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enactus Seneca</title>
+  <!-- SEO start -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Enactus Seneca Polytechnic - Meet Our Team",
+      "description": "Get to know the passionate and innovative students who drive Enactus Seneca's mission of creating positive social and economic change.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Enactus Seneca Polytechnic",
+        "logo": "",
+        "foundingDate": "2024",
+        "founders": [
+          {
+            "@type": "Person",
+            "name": "Enactus Seneca Team"
+          }
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/company/enactus-senecapolytechnic/",
+          "https://twitter.com/EnactusSeneca"
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Seneca College",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1750 Finch Ave E",
+            "addressLocality": "Toronto",
+            "addressRegion": "Ontario",
+            "postalCode": "M2J 2X5",
+            "addressCountry": "CA"
+          }
+        },
+        "industry": "Non-profit Organizations",
+        "memberOf": {
+          "@type": "Organization",
+          "name": "Enactus Canada"
+        }
+      }
+    }
+  </script>
+  <script type="module">
+    import { injectJsonLd } from './js/jsonld.js';
+    injectJsonLd('team');
+  </script>
+  <script src="./js/common-ui.js"></script>
+  <!-- SEO end -->
+  <link rel="stylesheet" href="dist/reset.css" />
+  <link rel="stylesheet" href="dist/meetOurTeam.css" />
+  <link rel="stylesheet" href="dist/bootstrap.css">
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+
+<body>
+  <nav id="navbar" class="navbar navbar-expand-sm"></nav>
+
+  <main>
+    <div class="join-us">
+      <h2>Apply for Enactus Seneca</h2>
+      <p>Fill out the form below to apply and join our team.</p>
+      
+      <form id="applyForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" class="form-control" id="phone" name="phone" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Why do you want to join?</label>
+          <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="department" class="form-label">Which department do you want to join?</label>
+          <select class="form-control" id="department" name="department" required>
+            <option value="" disabled selected>Select a department</option>
+            <option value="general_member">General Member</option>
+            <option value="web_dev">Web Development</option>
+            <option value="marketing">Marketing</option>
+            <option value="finance">Finance</option>
+            <option value="social_media">Social Media</option>
+            <option value="analysis">Analysis</option>
+            <option value="human_resources">Human Resources</option>
+            <option value="management">Management</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+  </main>
+
+  <footer id="footer" class="container-fluid p-4"></footer>
+  
+  <!-- Include your JavaScript file -->
+  <script src="./js/apply.js"></script>
+</body>
+
+</html>

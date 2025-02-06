@@ -13,10 +13,11 @@ function createNavbar() {
         </svg>
       </button>
       <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
-        <ol class="navbar-nav">
+        <ol class="navbar-nav ">
           <li class="nav-item"><a href="index.html">Home</a></li>
           <li class="nav-item"><a href="projects.html">Projects</a></li>
           <li class="nav-item"><a href="meetOurTeam.html">Meet Our Team</a></li>
+          <li class="nav-item"><a href="apply.html">Apply</a></li>
           <li class="nav-item"><a href="#footer">Contact Us</a></li>
         </ol>
       </div>
