@@ -70,7 +70,7 @@ export async function getMemberData() {
     const args = ['firstName', 'lastName', 'position', 'department', 'personImg', 'personalURL'];
     const processedMembers = await processSanityData(mappedMembers, args);
 
-    //defining the position hierarchy
+    // Defining the position hierarchy
     const positionOrder = {
       President: 1,
       'Vice President': 2,
@@ -80,10 +80,10 @@ export async function getMemberData() {
       'General Memeber': 6,
     };
 
-    //Sorting based on position priority
+    // Sorting based on position priority
     processedMembers.sort((a, b) => {
-      const rankA = positionOrder[a.position];
-      const rankB = positionOrder[b.position];
+      const rankA = positionOrder[a.position] || Infinity;
+      const rankB = positionOrder[b.position] || Infinity;
       if (rankA !== rankB) {
         return rankA - rankB;
       }
@@ -98,7 +98,7 @@ export async function getMemberData() {
     } catch (storageError) {
       console.warn('Session storage is full or disabled:', storageError);
     }
-
+    console.log(processedMembers);
     return processedMembers;
   } catch (err) {
     console.error('Error fetching member data:', err);
