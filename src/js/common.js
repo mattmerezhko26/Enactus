@@ -98,7 +98,7 @@ export async function getMemberData() {
     } catch (storageError) {
       console.warn('Session storage is full or disabled:', storageError);
     }
-    console.log(processedMembers);
+    // console.log(processedMembers);
     return processedMembers;
   } catch (err) {
     console.error('Error fetching member data:', err);

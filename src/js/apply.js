@@ -1,4 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
+import { fetchSanityData } from './common.js';
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const departmentSelect = document.querySelector('#department');
+  async function populateDepartments() {
+    try {
+      const departments = await fetchSanityData('*[_type == "department"]');
+      departments.sort((a, b) => a.title.localeCompare(b.title));
+
+      departmentSelect.innerHTML = '<option value="" disabled selected>Select a department</option>';
+
+      departments.forEach((dept) => {
+        const option = document.createElement('option');
+        option.value = dept.slug?.current || dept.title;
+        option.textContent = dept.title;
+        departmentSelect.appendChild(option);
+      });
+    } catch (err) {
+      console.error('Error loading departments:', err);
+    }
+  }
+
+  await populateDepartments();
+
   // Initialize EmailJS with your public key
   emailjs.init('YIa1f3wKQOM1r-2fJ'); // Replace with your actual EmailJS public key
 

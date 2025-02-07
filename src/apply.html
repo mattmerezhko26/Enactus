@@ -51,7 +51,6 @@
     import { injectJsonLd } from './js/jsonld.js';
     injectJsonLd('team');
   </script>
-  <script src="./js/common-ui.js"></script>
   <!-- SEO end -->
   <link rel="stylesheet" href="dist/reset.css" />
   <link rel="stylesheet" href="dist/meetOurTeam.css" />
@@ -85,29 +84,20 @@
         </div>
         <div class="mb-3">
           <label for="department" class="form-label">Which department do you want to join?</label>
-          <select class="form-control" id="department" name="department" required>
-            <option value="" disabled selected>Select a department</option>
-            <option value="general_member">General Member</option>
-            <option value="web_dev">Web Development</option>
-            <option value="marketing">Marketing</option>
-            <option value="finance">Finance</option>
-            <option value="social_media">Social Media</option>
-            <option value="analysis">Analysis</option>
-            <option value="human_resources">Human Resources</option>
-            <option value="management">Management</option>
-          </select>
+          <select class="form-select" id="department" name="department" required></select>
         </div>
         <div class="col-12">
-          <button type="submit" class="btn"  id="applyFormBtn">Submit</button>
+          <button type="submit" class="btn" id="applyFormBtn">Submit</button>
         </div>
       </form>
     </div>
   </main>
 
   <footer id="footer" class="container-fluid p-4"></footer>
-  
+
   <!-- Include your JavaScript file -->
-  <script src="./js/apply.js"></script>
+  <script type="module" src="./js/apply.js"></script>
+  <script src="./js/common-ui.js"></script>
 </body>
 
 </html>

@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Scroll to top button
   const toTopButton = document.getElementById('toTopBtn');
+  if (!toTopButton) return;
   toTopButton.innerHTML = createToTopBtn();
 
   toTopButton.addEventListener('click', (e) => {
