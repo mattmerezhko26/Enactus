@@ -1,10 +1,14 @@
 @use './colors.scss' as c;
 @use './mixins.scss' as m;
 @use './variables.scss' as v;
-// @font-face {
-//   font-family: 'SourceSansPro';
-//   src: url(../font/SourceSansPro-Regular.otf) format(otf);
-// }
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url('/font/SourceSansPro-Regular.otf') format('opentype');
+}
+
+body {
+  font-family: 'SourceSansPro', sans-serif;
+}
 
 // main
 main {
@@ -29,7 +33,7 @@ nav {
   border-bottom: 1px solid c.$black;
   padding: m.rem(10) m.rem(60) !important;
   img {
-    height: m.rem(44);
+    height: m.rem(65);
   }
   ol {
     li {
