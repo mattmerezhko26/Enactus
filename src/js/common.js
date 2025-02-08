@@ -52,7 +52,6 @@ export async function getMemberData() {
       return JSON.parse(cachedData);
     } catch (err) {
       console.error('Error parsing cached member data:', err);
-      // Fall back to fetching fresh data if parsing fails
     }
   }
 
@@ -70,6 +69,7 @@ export async function getMemberData() {
     const args = ['firstName', 'lastName', 'position', 'department', 'personImg', 'personalURL'];
     const processedMembers = await processSanityData(mappedMembers, args);
 
+    // Sort members by position order
     const positionOrder = {
       President: 1,
     };

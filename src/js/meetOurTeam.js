@@ -7,33 +7,33 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!Array.isArray(members) || members.length === 0) {
         throw new Error('Invalid or empty member data received');
       }
-      
-      const groupedMembers = splitAdmin(members);
+
+      const groupedMembers = splitAdmin(members) || [];
       if (groupedMembers.length === 0) {
         throw new Error('No departments found in member data');
       }
 
-      await Promise.all(renderDepartments(groupedMembers));
-    } catch (error) {
-      console.error('Error in team data processing:', {
-        message: error.message,
-      });
+      await renderDepartments(groupedMembers);
+    } catch (err) {
+      console.error('Error in team data processing:', err);
     }
   }
 
   // Split members into Administration and General Members
   function splitAdmin(members) {
+    if (!Array.isArray(members)) return [];
+
     return Object.values(
       members.reduce((acc, member) => {
         const departmentKey = member.department === 'Administration' ? 'Administration' : 'General Members';
-  
+
         if (!acc[departmentKey]) {
           acc[departmentKey] = {
             departmentName: departmentKey,
             members: [],
           };
         }
-  
+
         acc[departmentKey].members.push(member);
         return acc;
       }, {})
@@ -112,10 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
       a.href = platform === 'email' ? `mailto:${url}` : url;
       a.innerHTML = getSocialIconSVG(platform);
       li.appendChild(a);
-      fragment.appendChild(li);  // No reflow/repaint yet
+      fragment.appendChild(li); // No reflow/repaint yet
     }
 
-    ol.appendChild(fragment);  // Single reflow/repaint
+    ol.appendChild(fragment); // Single reflow/repaint
     return ol;
   }
 
