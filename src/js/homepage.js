@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderAboutUs(intro) {
     const { desc, groupImg, video } = intro;
-    const aboutUscontainer = document.querySelector('.about');
+    const aboutUsContainer = document.querySelector('.about');
     const div = document.createElement('div');
     addClasses(div, ['row', 'justify-content-between', 'm-0']);
     const p = document.createElement('p');
@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       p.textContent = firstPart;
       span.textContent = secondPart;
-      aboutUscontainer.appendChild(p);
-      aboutUscontainer.appendChild(div);
+      aboutUsContainer.appendChild(p);
+      aboutUsContainer.appendChild(div);
       div.appendChild(span);
     } else {
       console.log("The string doesn't have a second '.' character.");
