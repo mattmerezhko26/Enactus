@@ -34,35 +34,35 @@ main {
     margin: m.rem(20) 0 !important;
   }
 
-  .leaders {
-    max-width: m.rem(800);
-    margin: m.rem(20) auto;
-    gap: m.rem(20);
+  // .leaders {
+  //   max-width: m.rem(800);
+  //   margin: m.rem(20) auto;
+  //   gap: m.rem(20);
 
-    > div {
-      border: 1px solid c.$border;
-      border-radius: v.$border-radius;
-      padding: m.rem(20);
-      flex-direction: row;
-      align-items: center;
-      @include m.box-shadow;
+  //   > div {
+  //     border: 1px solid c.$border;
+  //     border-radius: v.$border-radius;
+  //     padding: m.rem(20);
+  //     flex-direction: row;
+  //     align-items: center;
+  //     @include m.box-shadow;
 
-      img {
-        max-width: m.rem(300);
-        aspect-ratio: 1 / 1;
-        border-radius: v.$border-radius;
-      }
+  //     img {
+  //       max-width: m.rem(300);
+  //       aspect-ratio: 1 / 1;
+  //       border-radius: v.$border-radius;
+  //     }
 
-      .card-text {
-        color: c.$grey;
-        @include socialIcons();
-      }
+  //     .card-text {
+  //       color: c.$grey;
+  //       @include socialIcons();
+  //     }
 
-      &:nth-of-type(odd) {
-        flex-direction: row-reverse;
-      }
-    }
-  }
+  //     &:nth-of-type(odd) {
+  //       flex-direction: row-reverse;
+  //     }
+  //   }
+  // }
 
   .department {
     > h2 {
@@ -111,11 +111,11 @@ main {
 }
 
 @media screen and (max-width: 576px) {
-  .leaders {
-    .card {
-      display: block !important;
-    }
-  }
+  // .leaders {
+  //   .card {
+  //     display: block !important;
+  //   }
+  // }
   .department-card {
     max-width: 20rem !important;
   }

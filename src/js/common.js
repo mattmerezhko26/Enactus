@@ -70,27 +70,22 @@ export async function getMemberData() {
     const args = ['firstName', 'lastName', 'position', 'department', 'personImg', 'personalURL'];
     const processedMembers = await processSanityData(mappedMembers, args);
 
-    // Defining the position hierarchy
     const positionOrder = {
       President: 1,
-      'Vice President': 2,
-      Executive: 3,
-      Associate: 4,
-      Director: 5,
-      'General Memeber': 6,
     };
-
-    // Sorting based on position priority
+    
+    const getRank = (position) => {
+      if (/VP of/i.test(position)) return 2;
+      if (/Project Manager/i.test(position)) return 3;
+      return positionOrder[position] || Infinity;
+    };
+    
     processedMembers.sort((a, b) => {
-      const rankA = positionOrder[a.position] || Infinity;
-      const rankB = positionOrder[b.position] || Infinity;
-      if (rankA !== rankB) {
-        return rankA - rankB;
-      }
-
-      return a.position.localeCompare(b.position);
+      const rankA = getRank(a.position);
+      const rankB = getRank(b.position);
+      return rankA - rankB || a.position.localeCompare(b.position);
     });
-
+    
     // Cache the processed data
     try {
       sessionStorage.setItem(CACHE_KEY, JSON.stringify(processedMembers));

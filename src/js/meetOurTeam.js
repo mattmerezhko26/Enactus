@@ -7,16 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!Array.isArray(members) || members.length === 0) {
         throw new Error('Invalid or empty member data received');
       }
-
-      const groupedMembers = groupByDepartment(members);
+      
+      const groupedMembers = splitAdmin(members);
       if (groupedMembers.length === 0) {
         throw new Error('No departments found in member data');
       }
 
-      // Split into admin team and other departments
-      const [adminTeam, ...otherMembers] = groupedMembers;
-
-      await Promise.all([renderAdmins(adminTeam.members), renderDepartments(otherMembers)]);
+      await Promise.all(renderDepartments(groupedMembers));
     } catch (error) {
       console.error('Error in team data processing:', {
         message: error.message,
@@ -24,58 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Groups an array of team members by their department.
-  function groupByDepartment(members) {
+  // Split members into Administration and General Members
+  function splitAdmin(members) {
     return Object.values(
       members.reduce((acc, member) => {
-        if (!acc[member.department]) {
-          acc[member.department] = {
-            departmentName: member.department,
+        const departmentKey = member.department === 'Administration' ? 'Administration' : 'General Members';
+  
+        if (!acc[departmentKey]) {
+          acc[departmentKey] = {
+            departmentName: departmentKey,
             members: [],
           };
         }
-        acc[member.department].members.push(member);
+  
+        acc[departmentKey].members.push(member);
         return acc;
       }, {})
     );
-  }
-
-  function renderAdmins(leaders) {
-    const adminContainer = document.querySelector('.leaders');
-    if (!adminContainer) return;
-
-    const fragment = document.createDocumentFragment();
-    leaders.forEach((leader) => {
-      fragment.appendChild(createLeaderCard(leader));
-    });
-    adminContainer.appendChild(fragment);
-  }
-
-  function createLeaderCard(leader) {
-    const { firstName, lastName, personImg, position, personalURL } = leader;
-    const card = document.createElement('div');
-    addClasses(card, ['card', 'justify-content-between']);
-
-    const img = document.createElement('img');
-    addClasses(img, ['card-img', 'col-md-6']);
-    Object.assign(img, {
-      src: personImg,
-      alt: `${firstName} ${lastName} image`,
-      loading: 'lazy',
-    });
-
-    const textDiv = document.createElement('div');
-    addClasses(textDiv, ['card-text', 'col-md-6']);
-    const name = document.createElement('h2');
-    name.textContent = `${firstName} ${lastName}`;
-    const role = document.createElement('h2');
-    role.textContent = position;
-    const socialIcons = createSocialLinks(personalURL);
-
-    textDiv.append(name, role);
-    textDiv.appendChild(socialIcons);
-    card.append(img, textDiv);
-    return card;
   }
 
   function renderDepartments(departments) {
@@ -85,8 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fragment = document.createDocumentFragment();
     departments.forEach(({ departmentName, members }) => {
       const header = document.createElement('h2');
-      header.textContent = departmentName;
-      header.id = departmentName.toLowerCase().replace(/\s+/g, '-'); // Create an ID for internal linking
+      header.textContent = departmentName === 'Administration' ? 'Executive Members' : 'General Members';
 
       const departmentBox = document.createElement('div');
       addClasses(departmentBox, ['department-box', 'card-group', 'row']);
