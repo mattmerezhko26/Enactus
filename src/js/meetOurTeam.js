@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Split members into Administration and General Members
   function splitAdmin(members) {
-    console.log(members);
+    // console.log(members);
     if (!Array.isArray(members)) return [];
 
     return Object.values(
