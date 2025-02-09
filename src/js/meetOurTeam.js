@@ -8,70 +8,74 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error('Invalid or empty member data received');
       }
 
-      const groupedMembers = splitAdmin(members) || [];
+      const groupedMembers = groupByPriority(members) || [];
       if (groupedMembers.length === 0) {
         throw new Error('No departments found in member data');
       }
 
-      await renderDepartments(groupedMembers);
+      await renderGroups(groupedMembers);
     } catch (err) {
       console.error('Error in team data processing:', err);
     }
   }
 
-  // Split members into Administration and General Members
-  function splitAdmin(members) {
+  // Group members by priority
+  function groupByPriority(members) {
     // console.log(members);
     if (!Array.isArray(members)) return [];
 
     return Object.values(
       members.reduce((acc, member) => {
-        let departmentKey;
+        let group;
 
-        if (/president|vp/i.test(member.position)) {
-          departmentKey = 'Leadership';
-        } else if (/director|project manager/i.test(member.position)) {
-          departmentKey = 'Executive';
-        } else {
-          departmentKey = 'General Members';
+        switch (member.priority) {
+          case 1:
+            group = 'Leadership';
+            break;
+          case 2:
+            group = 'Executive';
+            break;
+          default:
+            group = 'General Members';
+            break;
         }
 
-        if (!acc[departmentKey]) {
-          acc[departmentKey] = {
-            departmentName: departmentKey,
+        if (!acc[group]) {
+          acc[group] = {
+            group: group,
             members: [],
           };
         }
 
-        acc[departmentKey].members.push(member);
+        acc[group].members.push(member);
         return acc;
       }, {})
     );
   }
 
-  function renderDepartments(departments) {
+  function renderGroups(groups) {
     const teamContainer = document.querySelector('.department');
     if (!teamContainer) return;
 
     const fragment = document.createDocumentFragment();
-    departments.forEach(({ departmentName, members }) => {
+    groups.forEach(({ group, members }) => {
       const header = document.createElement('h2');
-      header.textContent = departmentName;
+      header.textContent = group;
 
-      const departmentBox = document.createElement('div');
-      addClasses(departmentBox, ['department-box', 'card-group', 'row']);
+      const box = document.createElement('div');
+      addClasses(box, ['department-box', 'card-group', 'row']);
 
       members.forEach((member) => {
-        departmentBox.appendChild(createDepartmentBox(member));
+        box.appendChild(createBox(member));
       });
 
-      fragment.append(header, departmentBox);
+      fragment.append(header, box);
     });
 
     teamContainer.appendChild(fragment);
   }
 
-  function createDepartmentBox(member) {
+  function createBox(member) {
     const wrapper = document.createElement('div');
     addClasses(wrapper, ['col-lg-3', 'col-md-4', 'col-sm-12']);
     wrapper.appendChild(createMemberCard(member));

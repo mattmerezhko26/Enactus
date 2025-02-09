@@ -66,26 +66,11 @@ export async function getMemberData() {
 
     const mappedMembers = memberData.map((member) => mapMemberData(member, positionLookup, departmentLookup));
 
-    const args = ['firstName', 'lastName', 'position', 'department', 'personImg', 'personalURL'];
+    const args = ['firstName', 'lastName', 'position', 'department', 'personImg', 'personalURL', 'priority'];
     const processedMembers = await processSanityData(mappedMembers, args);
 
-    // Sort members by position order
-    const positionOrder = {
-      President: 1,
-    };
-
-    const getRank = (position) => {
-      if (/VP of/i.test(position)) return 2;
-      if (/Project Manager/i.test(position)) return 3;
-      if (/Director/i.test(position)) return 4;
-      return positionOrder[position] || Infinity;
-    };
-
-    processedMembers.sort((a, b) => {
-      const rankA = getRank(a.position);
-      const rankB = getRank(b.position);
-      return rankA - rankB || a.position.localeCompare(b.position);
-    });
+    // Sort members by priority and position
+    processedMembers.sort((a, b) => a.priority - b.priority || a.position.localeCompare(b.position));
 
     // Cache the processed data
     try {
