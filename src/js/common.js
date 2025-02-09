@@ -73,19 +73,20 @@ export async function getMemberData() {
     const positionOrder = {
       President: 1,
     };
-    
+
     const getRank = (position) => {
       if (/VP of/i.test(position)) return 2;
       if (/Project Manager/i.test(position)) return 3;
+      if (/Director/i.test(position)) return 4;
       return positionOrder[position] || Infinity;
     };
-    
+
     processedMembers.sort((a, b) => {
       const rankA = getRank(a.position);
       const rankB = getRank(b.position);
       return rankA - rankB || a.position.localeCompare(b.position);
     });
-    
+
     // Cache the processed data
     try {
       sessionStorage.setItem(CACHE_KEY, JSON.stringify(processedMembers));

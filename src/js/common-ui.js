@@ -1,7 +1,7 @@
 function createNavbar() {
   return `
     <div class="container-fluid">
-      <a href="index.html" class="navbar-brand"><img src="./images/Enactus-seneca.png"
+      <a href="index.html" class="navbar-brand"><img src="./images/Enactus-Seneca.webp"
           alt="enactus seneca logo" /></a>
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

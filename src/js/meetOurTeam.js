@@ -21,11 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Split members into Administration and General Members
   function splitAdmin(members) {
+    console.log(members);
     if (!Array.isArray(members)) return [];
 
     return Object.values(
       members.reduce((acc, member) => {
-        const departmentKey = member.department === 'Administration' ? 'Administration' : 'General Members';
+        let departmentKey;
+
+        if (/president|vp/i.test(member.position)) {
+          departmentKey = 'Leadership';
+        } else if (/director|project manager/i.test(member.position)) {
+          departmentKey = 'Executive';
+        } else {
+          departmentKey = 'General Members';
+        }
 
         if (!acc[departmentKey]) {
           acc[departmentKey] = {
@@ -47,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fragment = document.createDocumentFragment();
     departments.forEach(({ departmentName, members }) => {
       const header = document.createElement('h2');
-      header.textContent = departmentName === 'Administration' ? 'Executive Members' : 'General Members';
+      header.textContent = departmentName;
 
       const departmentBox = document.createElement('div');
       addClasses(departmentBox, ['department-box', 'card-group', 'row']);
