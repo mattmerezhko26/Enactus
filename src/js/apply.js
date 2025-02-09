@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.error('Error:', error);
       alert(`Failed to submit your application: ${error.text || error.message}`);
     } finally {
-      // Restore button state
       submitButton.disabled = false;
       submitButton.textContent = 'Submit';
     }
