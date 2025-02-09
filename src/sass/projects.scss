@@ -15,6 +15,12 @@ main {
   > p {
     margin: m.rem(20) 0 !important;
   }
+  ol {
+    list-style: decimal;
+  }
+  ul {
+    list-style: disc;
+  }
 }
 
 .card {

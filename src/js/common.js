@@ -117,7 +117,7 @@ export function convertSanityAssetRefToUrl(assetRef, projectId = 'td08n1oq', dat
   // w → width, h → height
   // fit=crop → cut off any excess image to fit the specified dimensions
   // auto=format → automatically determine the best image format (e.g., WebP)
-  return `https://cdn.sanity.io/images/${projectId}/${dataset}/${assetId}-${dimensions}.${format}?w=800&h=800&fit=crop&auto=format`;
+  return `https://cdn.sanity.io/images/${projectId}/${dataset}/${assetId}-${dimensions}.${format}?w=800&fit=crop&auto=format`;
 }
 
 export function addClasses(element, classes) {
