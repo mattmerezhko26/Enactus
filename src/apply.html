@@ -62,7 +62,7 @@
     <h2>Apply for Enactus Seneca</h2>
     <p>Fill out the form below to apply and join our team.</p>
     <div class="join-us">
-      <form id="applyForm" class="row">
+      <form id="applyForm" class="row" enctype="multipart/form-data">
         <div class="mb-3 col-md-12">
           <label for="name" class="form-label">Full Name</label>
           <input type="text" class="form-control" id="name" name="name" required>
@@ -83,10 +83,16 @@
           <label for="department" class="form-label">Which department do you want to join?</label>
           <select class="form-select" id="department" name="department" required></select>
         </div>
+        <!-- New Resume Upload Field -->
+        <div class="mb-3">
+          <label for="resume" class="form-label">Attach Your Resume</label>
+          <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+        </div>
         <div class="col-12">
           <button type="submit" class="btn" id="applyFormBtn">Submit</button>
         </div>
       </form>
+      
     </div>
   </main>
 

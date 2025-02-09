@@ -2,6 +2,7 @@ import { fetchSanityData } from './common.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const departmentSelect = document.querySelector('#department');
+  
   async function populateDepartments() {
     try {
       const departments = await fetchSanityData('*[_type == "department"]');
@@ -35,17 +36,40 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   async function handleFormSubmit(event) {
     const { target } = event;
-    const formData = new FormData(event.target);
-    const formObject = Object.fromEntries(formData.entries());
-    // console.log(formObject);
-
+    const formData = new FormData(target);
+  
+    // Explicitly append data to formData
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+    const department = formData.get('department');
+  
+    // Append missing data to formData
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('message', message);
+    formData.append('department', department);
+  
+    // Convert resume file to Base64 if it exists
+    const resumeFile = formData.get('resume');
+    if (resumeFile && resumeFile.size > 0) {
+      try {
+        const resumeBase64 = await fileToBase64(resumeFile);
+        formData.append('resume_base64', resumeBase64);
+      } catch (error) {
+        console.error('Error converting file:', error);
+        alert('Failed to process the resume file.');
+        return;
+      }
+    }
+  
     // Disable button to prevent multiple submissions
     submitButton.disabled = true;
     submitButton.textContent = 'Submitting...';
-
+  
     try {
       const res = await emailjs.sendForm('service_j53ph2j', 'template_g6jj7zm', target);
-
+  
       if (res.status === 200) {
         alert('Your application has been submitted!');
         form.reset(); // Reset form instead of reloading
@@ -60,5 +84,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       submitButton.disabled = false;
       submitButton.textContent = 'Submit';
     }
+  }
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
   }
 });
