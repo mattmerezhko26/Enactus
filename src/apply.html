@@ -53,6 +53,7 @@
   <link rel="stylesheet" href="dist/meetOurTeam.css" />
   <link rel="stylesheet" href="dist/bootstrap.css">
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -85,8 +86,12 @@
         </div>
         <!-- New Resume Upload Field -->
         <div class="mb-3">
-          <label for="resume" class="form-label">Attach Your Resume</label>
-          <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+          <label for="linkedin" class="form-label">LinkedIn Profile URL</label>
+          <input type="url" class="form-control" id="linkedin" name="linkedin" required>
+        </div>
+        <div class="mb-3">
+          <label for="resume_url" class="form-label">Resume URL</label>
+          <input type="url" class="form-control" id="resume_url" name="resume_url" required>
         </div>
         <div class="col-12">
           <button type="submit" class="btn" id="applyFormBtn">Submit</button>
