@@ -1,106 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="./images/favicon.webp">
-  <title>Enactus Seneca</title>
-  <!-- SEO start -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Enactus Seneca Polytechnic",
-      "url": "",
-      "description": "As a proud member of Enactus Canada, Enactus Seneca Polytechnic operates as an experiential learning platform dedicated to creating a better world through the development of entrepreneurial leaders and social innovators. We are a vibrant community of students, professors, and industry leaders who collaborate on entrepreneurial projects that not only lead to business success but also generate social impact.",
-      "publisher": {
-        "@type": "Organization",
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enactus Seneca</title>
+    <!-- SEO start -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
         "name": "Enactus Seneca Polytechnic",
-        "logo": "",
-        "foundingDate": "2024",
-        "founders": [
-          {
-            "@type": "Person",
-            "name": "Enactus Seneca Team"
-          }
-        ],
-        "sameAs": [
-          "https://www.linkedin.com/company/enactus-senecapolytechnic/",
-          "https://twitter.com/EnactusSeneca"
-        ],
-        "location": {
-          "@type": "Place",
-          "name": "Seneca College",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "1750 Finch Ave E",
-            "addressLocality": "Toronto",
-            "addressRegion": "Ontario",
-            "postalCode": "M2J 2X5",
-            "addressCountry": "CA"
-          }
-        },
-        "industry": "Non-profit Organizations",
-        "memberOf": {
+        "url": "",
+        "description": "As a proud member of Enactus Canada, Enactus Seneca Polytechnic operates as an experiential learning platform dedicated to creating a better world through the development of entrepreneurial leaders and social innovators. We are a vibrant community of students, professors, and industry leaders who collaborate on entrepreneurial projects that not only lead to business success but also generate social impact.",
+        "publisher": {
           "@type": "Organization",
-          "name": "Enactus Canada"
+          "name": "Enactus Seneca Polytechnic",
+          "logo": "",
+          "foundingDate": "2024",
+          "founders": [
+            {
+              "@type": "Person",
+              "name": "Enactus Seneca Team"
+            }
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/company/enactus-senecapolytechnic/",
+            "https://twitter.com/EnactusSeneca"
+          ],
+          "location": {
+            "@type": "Place",
+            "name": "Seneca College",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "1750 Finch Ave E",
+              "addressLocality": "Toronto",
+              "addressRegion": "Ontario",
+              "postalCode": "M2J 2X5",
+              "addressCountry": "CA"
+            }
+          },
+          "industry": "Non-profit Organizations",
+          "memberOf": {
+            "@type": "Organization",
+            "name": "Enactus Canada"
+          }
         }
       }
-    }
-  </script>
-  <!-- SEO end -->
-  <link rel="stylesheet" href="dist/reset.css">
-  <link rel="stylesheet" href="dist/homepage.css">
-  <link rel="stylesheet" href="dist/bootstrap.css">
-  <link rel="stylesheet" href="dist/swiper-bundle.min.css" />
-  <script src="./js/swiper-bundle.min.js"></script>
-  <script type="module" src="./js/common.js"></script>
-</head>
+    </script>
+    <script type="module">
+      import { injectJsonLd } from './js/jsonld.js';
+      injectJsonLd('home');
+    </script>
+    <!-- SEO end -->
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/homepage.css" />
+    <link rel="stylesheet" href="dist/bootstrap.css" />
+    <link rel="stylesheet" href="dist/swiper-bundle.min.css" />
+    <script src="./js/swiper-bundle.min.js"></script>
+    <script type="module" src="./js/common.js"></script>
+  </head>
 
-<body>
-  <nav id="navbar" class="navbar navbar-expand-sm"></nav>
-  <div class="mainPhoto container-fluid p-0">
-    <img
-      src="./images/Enactus-Image.jpg"
-      alt="enactus seneca group photo">
-    <div>
-      <h2>Enactus Seneca</h2>
-      <p>WE don’t just believe in change</p>
-      <p>WE are the change we want to see in the world.</p>
-    </div>
-  </div>
-  <main class="info container">
-    <h2>What is Enactus?</h2>
-    <div class="enactus row justify-content-between gap-3 m-0">
-    </div>
-    <h2>About us</h2>
-    <div class="about m-0">
-    </div>
-    <h2>Meet our team</h2>
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
+  <body>
+    <nav id="navbar" class="navbar navbar-expand-sm"></nav>
+    <div class="mainPhoto container-fluid p-0">
+      <img src="./images/Enactus-Image.jpg" alt="enactus seneca group photo" />
+      <div>
+        <h2>Enactus Seneca</h2>
+        <p>WE don’t just believe in change</p>
+        <p>WE are the change we want to see in the world.</p>
       </div>
-      <button class="swiper-button-next" type="button" aria-label="Next page">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right"
-          viewBox="0 0 16 16">
-          <path fill-rule="evenodd"
-            d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5" />
-        </svg>
-      </button>
-      <button class="swiper-button-prev" type="button" aria-label="Previous page">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-left"
-          viewBox="0 0 16 16">
-          <path fill-rule="evenodd"
-            d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5" />
-        </svg>
-      </button>
     </div>
-    <button type="button" id="toTopBtn" class="toTopBtn"></button>
-  </main>
-  <footer id="footer" class="container-fluid p-4"></footer>
-  <script type="module" src="./js/homepage.js"></script>
-  <script src="./js/common-ui.js"></script>
-</body>
+    <main class="info container">
+      <h2>What is Enactus?</h2>
+      <div class="enactus row justify-content-between gap-3 m-0"></div>
+      <h2>About us</h2>
+      <div class="about m-0"></div>
 
+      <h2 class="text-center mt-5">Our Fundraising Activity (2024-2025)</h2>
+      <h1>She Can</h1>
+      <div class="row justify-content-center align-items-center my-4 mb-5">
+        <div class="col-md-6">
+          <img src="./images/Enactus-She_Can.png" alt="Fundraising Event" class="img-fluid rounded shadow" />
+        </div>
+        <div class="col-md-6">
+          <p class="lead">
+            🌟 <strong>She Can!</strong> – Through our fundraising efforts, we raised <strong>💰 $1,520</strong> and collected 
+            <strong>🎁 774 products</strong>. This contribution has empowered <strong>👩‍🎓 100 girls in Tanzania</strong> to stay in 
+            school for an entire year. Our initiative demonstrates the power of community support in creating lasting change.  
+            <br /><br />
+            💡 Together, we make a difference!  
+          </p>
+        </div>
+      </div>
+      <h1>Krispy Cream</h1>
+      <div class="row justify-content-center align-items-center my-4 flex-row-reverse">
+        <div class="col-md-6">
+          <img src="./images/Enactus - Krispy Cream.png" alt="Fundraising Event" class="img-fluid rounded shadow" />
+        </div>
+        <div class="col-md-6">
+          <p class="lead">
+            🤝 Whether it’s organizing charity drives, hosting networking events, or launching innovative campaigns, our 
+            fundraising efforts help sustain our mission of using entrepreneurial action for positive change.  
+            <br /><br />
+            🎯 We collaborated with <strong>SSF</strong>, successfully selling <strong>📦 110 boxes</strong> and raising 
+            <strong>💰 $1,900+</strong>. This achievement reflects the power of teamwork and community support in driving 
+            meaningful impact.  
+            <br /><br />
+            🚀 Together, we create change!  
+          </p>
+        </div>
+      </div>
+      <h2>Meet our team</h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper"></div>
+        <button class="swiper-button-next" type="button" aria-label="Next page">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-arrow-bar-right"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5"
+            />
+          </svg>
+        </button>
+        <button class="swiper-button-prev" type="button" aria-label="Previous page">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-arrow-bar-left"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5"
+            />
+          </svg>
+        </button>
+      </div>
+      <button type="button" id="toTopBtn" class="toTopBtn"></button>
+    </main>
+    <footer id="footer" class="container-fluid p-4"></footer>
+    <script type="module" src="./js/homepage.js"></script>
+    <script src="./js/common-ui.js"></script>
+  </body>
 </html>

@@ -53,6 +53,7 @@
   <link rel="stylesheet" href="dist/meetOurTeam.css" />
   <link rel="stylesheet" href="dist/bootstrap.css">
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -62,7 +63,7 @@
     <h2>Apply for Enactus Seneca</h2>
     <p>Fill out the form below to apply and join our team.</p>
     <div class="join-us">
-      <form id="applyForm" class="row">
+      <form id="applyForm" class="row" enctype="multipart/form-data">
         <div class="mb-3 col-md-12">
           <label for="name" class="form-label">Full Name</label>
           <input type="text" class="form-control" id="name" name="name" required>
@@ -83,10 +84,20 @@
           <label for="department" class="form-label">Which department do you want to join?</label>
           <select class="form-select" id="department" name="department" required></select>
         </div>
+        <!-- New Resume Upload Field -->
+        <div class="mb-3">
+          <label for="linkedin" class="form-label">LinkedIn Profile URL</label>
+          <input type="url" class="form-control" id="linkedin" name="linkedin" required>
+        </div>
+        <div class="mb-3">
+          <label for="resume_url" class="form-label">Resume URL</label>
+          <input type="url" class="form-control" id="resume_url" name="resume_url" required>
+        </div>
         <div class="col-12">
           <button type="submit" class="btn" id="applyFormBtn">Submit</button>
         </div>
       </form>
+      
     </div>
   </main>
 
