@@ -4,6 +4,7 @@
 @use './common.scss';
 
 .mainPhoto {
+  height: m.rem(350);
   position: relative;
   img {
     width: 100%;
@@ -28,6 +29,7 @@ main {
     margin: m.rem(40) 0;
   }
   img {
+    width: 100%;
     max-height: m.rem(300);
     border-radius: v.$border-radius;
   }
