@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/x-icon" href="./images/favicon.webp">
   <title>Enactus Seneca</title>
+
   <!-- SEO start -->
   <script type="application/ld+json">
     {
@@ -49,17 +50,39 @@
     }
   </script>
   <!-- SEO end -->
+
   <link rel="stylesheet" href="dist/reset.css" />
   <link rel="stylesheet" href="dist/meetOurTeam.css" />
   <link rel="stylesheet" href="dist/bootstrap.css">
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <style>
+    /* Ensure footer stays at the bottom */
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex-grow: 1; /* Pushes the footer down */
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
   <nav id="navbar" class="navbar navbar-expand-sm"></nav>
 
-  <main class="container">
+  <main class="container flex-grow-1">
     <h2>Apply for Enactus Seneca</h2>
     <p>Fill out the form below to apply and join our team.</p>
     <div class="join-us">
@@ -97,11 +120,10 @@
           <button type="submit" class="btn" id="applyFormBtn">Submit</button>
         </div>
       </form>
-      
     </div>
   </main>
 
-  <footer id="footer" class="container-fluid p-4"></footer>
+  <footer id="footer" class="container-fluid p-4">© 2024 Enactus Seneca</footer>
 
   <!-- Include your JavaScript file -->
   <script type="module" src="./js/apply.js"></script>
