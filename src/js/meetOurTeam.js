@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error('No departments found in member data');
       }
 
+      console.log(groupedMembers);
+
       await renderGroups(groupedMembers);
     } catch (err) {
       console.error('Error in team data processing:', err);
@@ -21,36 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Group members by priority
   function groupByPriority(members) {
-    // console.log(members);
     if (!Array.isArray(members)) return [];
 
-    return Object.values(
-      members.reduce((acc, member) => {
-        let group;
+    // Order of groups to display
+    const priorityOrder = ['Leadership', 'Executive', 'General Members'];
 
-        switch (member.priority) {
-          case 1:
-            group = 'Leadership';
-            break;
-          case 2:
-            group = 'Executive';
-            break;
-          default:
-            group = 'General Members';
-            break;
-        }
+    const grouped = priorityOrder.reduce((acc, group) => {
+      acc[group] = { group, members: [] };
+      return acc;
+    }, {});
 
-        if (!acc[group]) {
-          acc[group] = {
-            group: group,
-            members: [],
-          };
-        }
+    for (const member of members) {
+      // Default to 'General Members' if priority is undefined or out of range
+      const group = priorityOrder[member.priority - 1] || 'General Members';
+      grouped[group].members.push(member);
+    }
 
-        acc[group].members.push(member);
-        return acc;
-      }, {})
-    );
+    return priorityOrder.map((group) => grouped[group]);
   }
 
   function renderGroups(groups) {
